@@ -1,0 +1,27 @@
+{
+  "name": "shri2013",
+  "version": "0.0.0",
+  "authors": [
+    "Ivan Zasimoff"
+  ],
+  "license": "BSD",
+  "homepage": "http://shri2013.ru",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~1.10.2",
+    "backbone": "~1.0.0",
+    "underscore": "~1.5.2",
+    "mocha": "~1.13.0",
+    "sinon": "~1.7.3",
+    "chai": "~1.8.0",
+    "parsleyjs": "~1.1.18"
+  }
+}
