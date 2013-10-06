@@ -59,3 +59,5 @@ fixtures.person3 = {
 		}
 	]
 };
+
+fixtures.persons = [fixtures.person1, fixtures.person2, fixtures.person3];
