@@ -1,4 +1,4 @@
-var PersonView = Backbone.View.extend({
+App.PersonView = Backbone.View.extend({
 
 	tagName: 'article',
 
