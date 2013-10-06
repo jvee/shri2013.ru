@@ -3,8 +3,8 @@ suite('PersonModel', function () {
 	suite('Common', function () {
 
 		test('should exist', function () {
-			assert.isNotNull(PersonModel, 'as global var');
-			assert.typeOf(PersonModel, 'function', 'as constructor');
+			assert.isNotNull(App.PersonModel, 'as App namespace var');
+			assert.typeOf(App.PersonModel, 'function', 'as constructor');
 		});
 
 	});
@@ -12,7 +12,7 @@ suite('PersonModel', function () {
 	suite('#initialize()', function () {
 
 		test('should have right defaults', function () {
-			var person = new PersonModel();
+			var person = new App.PersonModel();
 
 			assert.equal(person.get('name'), '', 'name');
 			assert.equal(person.get('photo'), '', 'photo');
@@ -22,7 +22,7 @@ suite('PersonModel', function () {
 
 		test('should accept right data', function () {
 			var fixture = fixtures.person1,
-				person = new PersonModel(fixture);
+				person = new App.PersonModel(fixture);
 
 			assert.equal(person.get('name'), fixture.name, 'name');
 			assert.equal(person.get('photo'), fixture.photo, 'photo');

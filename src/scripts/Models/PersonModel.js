@@ -1,4 +1,4 @@
-var PersonModel = Backbone.Model.extend({
+App.PersonModel = Backbone.Model.extend({
 
 	defaults: {
 		name : '',
