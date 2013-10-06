@@ -3,8 +3,8 @@ suite('PersonCollection', function () {
 	suite('Common', function () {
 
 		test('should exist', function () {
-			assert.isNotNull(PersonCollection, 'as global var');
-			assert.typeOf(PersonCollection, 'function', 'as constructor');
+			assert.isNotNull(App.PersonCollection, 'as "App" namespace var');
+			assert.typeOf(App.PersonCollection, 'function', 'as constructor');
 		});
 
 	});
@@ -12,11 +12,11 @@ suite('PersonCollection', function () {
 	suite('#initialize()', function () {
 
 		test('should have right defaults', function () {
-			var person = new PersonCollection();
+			var person = new App.PersonCollection();
 		});
 
 		test('should have right sorting', function () {
-			var person = new PersonCollection([
+			var person = new App.PersonCollection([
 					fixtures.person1,
 					fixtures.person2,
 					fixtures.person3

@@ -1,4 +1,4 @@
-var PersonCollection = Backbone.Collection.extend({
+App.PersonCollection = Backbone.Collection.extend({
 
 	comparator: 'name'
 
