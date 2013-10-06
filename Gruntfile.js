@@ -99,6 +99,14 @@ module.exports = function (grunt) {
 				},
 				src: ['src/templates/**/*.dot'],
 				dest: 'site/js/templates.js'
+			},
+
+			test: {
+				options: {
+					variable: 'tmpl',
+				},
+				src: ['src/templates/**/*.dot'],
+				dest: 'test/fixtures/templates.js'
 			}
 		},
 
