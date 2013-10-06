@@ -1,4 +1,4 @@
-var PersonListView = Backbone.View.extend({
+App.PersonListView = Backbone.View.extend({
 
 	tagName: 'section',
 

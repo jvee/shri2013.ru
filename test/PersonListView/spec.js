@@ -2,13 +2,13 @@ suite('PersonListView', function () {
 
 	setup(function () {
 		models = new Backbone.Collection(fixtures.persons);
-		persons = new PersonListView({ collection: models });
+		persons = new App.PersonListView({ collection: models });
 	});
 
 	suite('Common', function () {
 		test('should exist', function () {
-			assert.isNotNull(PersonListView, 'as global var');
-			assert.typeOf(PersonListView, 'function', 'as constructor');
+			assert.isNotNull(App.PersonListView, 'as global var');
+			assert.typeOf(App.PersonListView, 'function', 'as constructor');
 		});
 	});
 
