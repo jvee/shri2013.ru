@@ -83,4 +83,4 @@ fixtures.lecture3 = {
 	videoUrl: 'http://yadi.sk/d/Py0p5T629mVC4'
 };
 
-fixtures.persons = [fixtures.person1, fixtures.person2, fixtures.person3];
+fixtures.lectures = [fixtures.lecture1, fixtures.lecture2, fixtures.lecture3];
