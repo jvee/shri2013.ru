@@ -18,7 +18,7 @@ suite('PersonView', function () {
 
 			test('should have right defaults', function () {
 				assert.equal(person.el.tagName.toLowerCase(), 'article', 'tagName');
-				assert.equal(person.el.className, 'b-person', 'className');
+				assert.equal(person.el.className, 'b-person b-block', 'className');
 				assert.typeOf(person.template, 'function', 'template must be precompiled');
 			});
 

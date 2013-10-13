@@ -6,7 +6,7 @@
 
 		tagName: 'article',
 
-		className: 'b-person',
+		className: 'b-person b-block',
 
 		template: App.templates['PersonTemplate'],
 
