@@ -9,20 +9,24 @@ suite('LectureCollection', function () {
 
 	});
 
-	suite('#initialize()', function () {
+	suite('Methods', function () {
 
-		test('should have right defaults', function () {
-			var lectures = new App.LectureCollection();
-		});
+		suite('#initialize()', function () {
 
-		test('should have right sorting', function () {
-			var lectures = new App.LectureCollection(fixtures.lectures);
+			test('should have right defaults', function () {
+				var lectures = new App.LectureCollection();
+			});
 
-			var lectureModels = lectures.toJSON();
+			test('should have right sorting', function () {
+				var lectures = new App.LectureCollection(fixtures.lectures);
 
-			assert.deepEqual(lectureModels[0], fixtures.lecture3);
-			assert.deepEqual(lectureModels[1], fixtures.lecture1);
-			assert.deepEqual(lectureModels[2], fixtures.lecture2);
+				var lectureModels = lectures.toJSON();
+
+				assert.deepEqual(lectureModels[0], fixtures.lecture3);
+				assert.deepEqual(lectureModels[1], fixtures.lecture1);
+				assert.deepEqual(lectureModels[2], fixtures.lecture2);
+			});
+
 		});
 
 	});

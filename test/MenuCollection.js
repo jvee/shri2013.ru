@@ -9,20 +9,24 @@ suite('MenuCollection', function () {
 
 	});
 
-	suite('#initialize()', function () {
+	suite('Methods', function () {
 
-		test('should have right defaults', function () {
-			var menu = new App.MenuCollection();
-		});
+		suite('#initialize()', function () {
 
-		test('should have right sorting', function () {
-			var menu = new App.MenuCollection(fixtures.menu);
+			test('should have right defaults', function () {
+				var menu = new App.MenuCollection();
+			});
 
-			var menuItemModels = menu.toJSON();
+			test('should have right sorting', function () {
+				var menu = new App.MenuCollection(fixtures.menu);
 
-			assert.deepEqual(menuItemModels[0], fixtures.menuItem1);
-			assert.deepEqual(menuItemModels[1], fixtures.menuItem2);
-			assert.deepEqual(menuItemModels[2], fixtures.menuItem3);
+				var menuItemModels = menu.toJSON();
+
+				assert.deepEqual(menuItemModels[0], fixtures.menuItem1);
+				assert.deepEqual(menuItemModels[1], fixtures.menuItem2);
+				assert.deepEqual(menuItemModels[2], fixtures.menuItem3);
+			});
+
 		});
 
 	});

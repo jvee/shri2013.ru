@@ -9,25 +9,29 @@ suite('LectureModel', function () {
 
 	});
 
-	suite('#initialize()', function () {
+	suite('Methods', function () {
 
-		test('should have right defaults', function () {
-			var lecture = new App.LectureModel();
+		suite('#initialize()', function () {
 
-			assert.equal(lecture.get('title'), '', 'title');
-			assert.equal(lecture.get('description'), '', 'description');
-			assert.equal(lecture.get('presentationUrl'), '', 'presentationUrl');
-			assert.deepEqual(lecture.get('videoUrl'), '', 'videoUrl');
-		});
+			test('should have right defaults', function () {
+				var lecture = new App.LectureModel();
 
-		test('should accept right data', function () {
-			var fixture = fixtures.lecture1,
-				lecture = new App.LectureModel(fixture);
+				assert.equal(lecture.get('title'), '', 'title');
+				assert.equal(lecture.get('description'), '', 'description');
+				assert.equal(lecture.get('presentationUrl'), '', 'presentationUrl');
+				assert.deepEqual(lecture.get('videoUrl'), '', 'videoUrl');
+			});
 
-			assert.equal(lecture.get('title'), fixture.title, 'title');
-			assert.equal(lecture.get('description'), fixture.description, 'description');
-			assert.equal(lecture.get('presentationUrl'), fixture.presentationUrl, 'presentationUrl');
-			assert.deepEqual(lecture.get('videoUrl'), fixture.videoUrl, 'videoUrl');
+			test('should accept right data', function () {
+				var fixture = fixtures.lecture1,
+					lecture = new App.LectureModel(fixture);
+
+				assert.equal(lecture.get('title'), fixture.title, 'title');
+				assert.equal(lecture.get('description'), fixture.description, 'description');
+				assert.equal(lecture.get('presentationUrl'), fixture.presentationUrl, 'presentationUrl');
+				assert.deepEqual(lecture.get('videoUrl'), fixture.videoUrl, 'videoUrl');
+
+			});
 
 		});
 

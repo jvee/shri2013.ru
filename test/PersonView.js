@@ -12,29 +12,33 @@ suite('PersonView', function () {
 		});
 	});
 
-	suite('#initialize()', function () {
+	suite('Methods', function () {
 
-		test('should have right defaults', function () {
-			assert.equal(person.el.tagName.toLowerCase(), 'article', 'tagName');
-			assert.equal(person.el.className, 'b-person', 'className');
-			assert.typeOf(person.template, 'function', 'template must be precompiled');
+		suite('#initialize()', function () {
+
+			test('should have right defaults', function () {
+				assert.equal(person.el.tagName.toLowerCase(), 'article', 'tagName');
+				assert.equal(person.el.className, 'b-person', 'className');
+				assert.typeOf(person.template, 'function', 'template must be precompiled');
+			});
+
 		});
 
-	});
+		suite('#render()', function () {
 
-	suite('#render()', function () {
+			setup(function () {
+				testTemplate = App.templates.PersonTemplate(fixtures.person1);
+				person.render();
+			});
 
-		setup(function () {
-			testTemplate = App.templates.PersonTemplate(fixtures.person1);
-			person.render();
-		});
+			test('should render', function () {
+				assert.equal(person.el.innerHTML, testTemplate, 'right HTML');
+			});
 
-		test('should render', function () {
-			assert.equal(person.el.innerHTML, testTemplate, 'right HTML');
-		});
+			test('should return', function () {
+				assert.equal(person.render(), person, 'PersonView object');
+			});
 
-		test('should return', function () {
-			assert.equal(person.render(), person, 'PersonView object');
 		});
 
 	});

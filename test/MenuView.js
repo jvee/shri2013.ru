@@ -12,54 +12,58 @@ suite('MenuView', function () {
 		});
 	});
 
-	suite('#initialize()', function () {
+	suite('Methods', function () {
 
-		test('should have right defaults', function () {
-			assert.equal(menu.el.tagName.toLowerCase(), 'ul', 'tagName');
-			assert.equal(menu.el.className, 'b-menu', 'className');
-			// assert.typeOf(person.template, 'function', 'template must be precompiled');
-		});
+		suite('#initialize()', function () {
 
-	});
-
-	suite('#render()', function () {
-
-		setup(function () {
-			this.testTemplate = '';
-
-			for (var x = 0; x < fixtures.menu.length; x++) {
-				this.testTemplate += '<li class="b-menu-item">';
-				this.testTemplate += App.templates.MenuItemTemplate(fixtures.menu[x]);
-				this.testTemplate += '</li>';
-			}
-
-			menu.render();
+			test('should have right defaults', function () {
+				assert.equal(menu.el.tagName.toLowerCase(), 'ul', 'tagName');
+				assert.equal(menu.el.className, 'b-menu', 'className');
+				// assert.typeOf(person.template, 'function', 'template must be precompiled');
+			});
 
 		});
 
-		test('should render layout', function () {
-			assert.equal(menu.el.innerHTML, this.testTemplate, 'right HTML');
+		suite('#render()', function () {
+
+			setup(function () {
+				this.testTemplate = '';
+
+				for (var x = 0; x < fixtures.menu.length; x++) {
+					this.testTemplate += '<li class="b-menu-item">';
+					this.testTemplate += App.templates.MenuItemTemplate(fixtures.menu[x]);
+					this.testTemplate += '</li>';
+				}
+
+				menu.render();
+
+			});
+
+			test('should render layout', function () {
+				assert.equal(menu.el.innerHTML, this.testTemplate, 'right HTML');
+			});
+
+			test('should return this', function () {
+				assert.equal(menu.render(), menu, 'MenuView object');
+			});
+
+			test('should call method #addItem()', function () {
+
+				menu.addItem = sinon.stub();
+				menu.render();
+
+				assert.ok(menu.addItem.calledThrice);
+
+			});
+
 		});
 
-		test('should return this', function () {
-			assert.equal(menu.render(), menu, 'MenuView object');
-		});
+		suite('#addItem', function () {
 
-		test('should call method #addItem()', function () {
+			test('should return this', function () {
+				assert.equal(menu.addItem(models.first()), menu, 'MenuView object');
+			});
 
-			menu.addItem = sinon.stub();
-			menu.render();
-
-			assert.ok(menu.addItem.calledThrice);
-
-		});
-
-	});
-
-	suite('#addItem', function () {
-
-		test('should return this', function () {
-			assert.equal(menu.addItem(models.first()), menu, 'MenuView object');
 		});
 
 	});

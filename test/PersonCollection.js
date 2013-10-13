@@ -9,24 +9,28 @@ suite('PersonCollection', function () {
 
 	});
 
-	suite('#initialize()', function () {
+	suite('Methods', function () {
 
-		test('should have right defaults', function () {
-			var person = new App.PersonCollection();
-		});
+		suite('#initialize()', function () {
 
-		test('should have right sorting', function () {
-			var person = new App.PersonCollection([
-					fixtures.person1,
-					fixtures.person2,
-					fixtures.person3
-				]);
+			test('should have right defaults', function () {
+				var person = new App.PersonCollection();
+			});
 
-			var personModels = person.toJSON();
+			test('should have right sorting', function () {
+				var person = new App.PersonCollection([
+						fixtures.person1,
+						fixtures.person2,
+						fixtures.person3
+					]);
 
-			assert.deepEqual(personModels[0], fixtures.person3);
-			assert.deepEqual(personModels[1], fixtures.person1);
-			assert.deepEqual(personModels[2], fixtures.person2);
+				var personModels = person.toJSON();
+
+				assert.deepEqual(personModels[0], fixtures.person3);
+				assert.deepEqual(personModels[1], fixtures.person1);
+				assert.deepEqual(personModels[2], fixtures.person2);
+			});
+
 		});
 
 	});
