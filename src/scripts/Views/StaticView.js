@@ -4,7 +4,7 @@
 
 		tagName: 'article',
 
-		className: 'b-static',
+		className: 'b-static b-text b-block',
 
 		render: function () {
 			this.el.innerHTML = this.model.get('content');
