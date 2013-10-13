@@ -97,14 +97,16 @@ fixtures.menuItem2 = {
 	index : 1,
 	title: 'Студенты',
 	url: '/students',
-	type: 'PersonListView'
+	type: 'PersonListView',
+	active: false
 };
 
 fixtures.menuItem3 = {
 	index : 2,
 	title: 'Лекции',
 	url: '/lectures',
-	type: 'LectureListView'
+	type: 'LectureListView',
+	active: false
 };
 
 fixtures.menu = [fixtures.menuItem1, fixtures.menuItem2, fixtures.menuItem3];
