@@ -6,6 +6,7 @@
 
 		defaults: {
 			title : '',
+			lecturer: '',
 			description: '',
 			presentationUrl: '',
 			videoUrl: ''
