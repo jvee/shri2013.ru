@@ -18,7 +18,7 @@
 </div>
 
 
-<div class="b-block__content">
+<div class="b-block__content b-text">
 	{{?it.description}}
 		{{=it.description}}
 	{{?}}
