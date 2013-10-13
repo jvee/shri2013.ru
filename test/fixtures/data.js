@@ -84,3 +84,29 @@ fixtures.lecture3 = {
 };
 
 fixtures.lectures = [fixtures.lecture1, fixtures.lecture2, fixtures.lecture3];
+
+fixtures.menuItem1 = {
+	index : 0,
+	title: 'О ШРИ',
+	url: '/',
+	type: 'StaticView',
+	active: true
+};
+
+fixtures.menuItem2 = {
+	index : 1,
+	title: 'Студенты',
+	url: '/students',
+	type: 'PersonListView',
+	active: false
+};
+
+fixtures.menuItem3 = {
+	index : 2,
+	title: 'Лекции',
+	url: '/lectures',
+	type: 'LectureListView',
+	active: false
+};
+
+fixtures.menu = [fixtures.menuItem1, fixtures.menuItem2, fixtures.menuItem3];
