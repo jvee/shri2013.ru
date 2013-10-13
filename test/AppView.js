@@ -10,7 +10,7 @@ suite('AppView', function () {
 
 		this.app = new App.AppView({
 			el: document.createElement('body'),
-			data: App.data
+			data: fixtures.appData
 		});
 	});
 
