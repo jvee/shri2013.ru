@@ -18,7 +18,7 @@ suite('LectureView', function () {
 
 			test('should have right defaults', function () {
 				assert.equal(lecture.el.tagName.toLowerCase(), 'article', 'tagName');
-				assert.equal(lecture.el.className, 'b-lecture', 'className');
+				assert.equal(lecture.el.className, 'b-lecture b-block', 'className');
 				assert.typeOf(lecture.template, 'function', 'template must be precompiled');
 			});
 
