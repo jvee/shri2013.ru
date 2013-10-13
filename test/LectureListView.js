@@ -28,7 +28,9 @@ suite('LectureListView', function () {
 			this.testTemplate = '';
 
 			for (var x = 0; x < fixtures.lectures.length; x++) {
+				this.testTemplate += '<article class="b-lecture">';
 				this.testTemplate += tmpl.LectureTemplate(fixtures.lectures[x]);
+				this.testTemplate += '</article>';
 			}
 
 			lectures.render();
