@@ -20,8 +20,6 @@ suite('LectureCollection', function () {
 
 			var lectureModels = lectures.toJSON();
 
-			console.log(lectureModels);
-
 			assert.deepEqual(lectureModels[0], fixtures.lecture3);
 			assert.deepEqual(lectureModels[1], fixtures.lecture1);
 			assert.deepEqual(lectureModels[2], fixtures.lecture2);
