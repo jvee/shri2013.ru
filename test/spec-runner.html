@@ -33,7 +33,7 @@
     <script src="../components/sinonjs/sinon.js"></script>
 
     <!-- Include anything you want to test -->
-    <script> var App = {}</script>
+    <script> var App = {}; App.data = {};</script>
 
     <script src="fixtures/templates.js"></script>
     <script src="fixtures/data.js"></script>
@@ -53,9 +53,11 @@
     <script src="../src/scripts/Views/LectureView.js"></script>
     <script src="../src/scripts/Views/MenuItemView.js"></script>
     <script src="../src/scripts/Views/MenuView.js"></script>
+    <script src="../src/scripts/Views/AppView.js"></script>
 
     <!-- Spec files -->
 
+    <script src="AppView.js"></script>
 
     <script src="PersonModel.js"></script>
     <script src="LectureModel.js"></script>

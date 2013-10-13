@@ -2,6 +2,9 @@ var tmpl = (function(){
 function encodeHTMLSource() {  var encodeHTMLRules = { "&": "&#38;", "<": "&#60;", ">": "&#62;", '"': '&#34;', "'": '&#39;', "/": '&#47;' },  matchHTML = /&(?!#?w+;)|<|>|"|'|\//g;  return function() {    return this ? this.replace(matchHTML, function(m) {return encodeHTMLRules[m] || m;}) : this;  };};
 String.prototype.encodeHTML=encodeHTMLSource();
 var tmpl = {};
+  tmpl['AppTemplate']=function anonymous(it) {
+var out='<div class="b-header"></div><div class="b-page"></div>';return out;
+};
   tmpl['LectureTemplate']=function anonymous(it) {
 var out='<div class="b-lecture__title">'+(it.title)+'</div><div class="b-lecture__description">'+(it.description)+'</div>';if((it.videoUrl || it.presentationUrl)){out+='<ul class="b-lecture__links-list">';if(it.presentationUrl){out+='<li class="b-lecture__link b-lecture__link_type_presentation"><a href="'+(it.presentationUrl)+'">'+(it.presentationUrl)+'</a></li>';}if(it.videoUrl){out+='<li class="b-lecture__link b-lecture__link_type_video"><a href="'+(it.videoUrl)+'">'+(it.videoUrl)+'</a></li>';}out+='</ul>';}return out;
 };
