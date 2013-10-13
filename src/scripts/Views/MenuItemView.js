@@ -12,6 +12,9 @@ App.MenuItemView = Backbone.View.extend({
 
 	initialize: function () {
 		this.model.on('change', this.render, this);
+		if (App.vents) {
+			App.vents.on('app.memnu-item-activated', this.deactivate ,this);
+		}
 	},
 
 	render: function () {
@@ -27,8 +30,15 @@ App.MenuItemView = Backbone.View.extend({
 
 		if (isActive) return;
 
+		if (App.vents) App.vents.trigger('app.memnu-item-activated', this.model);
 		this.model.set('active', true);
-		// emit app event
+	},
 
+	deactivate: function (activeMenuItemModel) {
+		if (activeMenuItemModel && activeMenuItemModel === this.model) return;
+
+		this.model.set('active', false);
 	}
+
+
 });

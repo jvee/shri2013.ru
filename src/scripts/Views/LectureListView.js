@@ -11,9 +11,9 @@ App.LectureListView = Backbone.View.extend({
 	},
 
 	addLecture: function (model) {
-		var personView = new App.LectureView({ model: model});
+		var lectureView = new App.LectureView({ model: model});
 
-		this.el.innerHTML += personView.render().el.innerHTML;
+		this.el.appendChild(lectureView.render().el);
 
 		return this;
 	}
