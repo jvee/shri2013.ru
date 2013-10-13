@@ -28,7 +28,7 @@ App.MenuItemView = Backbone.View.extend({
 		if (isActive) return;
 
 		this.model.set('active', true);
-		// emit app event
 
+		if (App.vents) App.vents.trigger('app.memnu-item-activated', this);
 	}
 });

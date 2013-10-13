@@ -3,6 +3,8 @@ suite('MenuItemView', function () {
 	setup(function () {
 		model = new Backbone.Model(fixtures.menuItem1);
 		menuItem = new App.MenuItemView({ model: model });
+
+		if (!App.vents) App.vents = _.extend({}, Backbone.Events);
 	});
 
 	suite('Common', function () {
@@ -43,18 +45,26 @@ suite('MenuItemView', function () {
 
 		setup(function () {
 			this.notActiveMenuItem = new App.MenuItemView({model: new Backbone.Model(fixtures.menuItem2)});
+			
 		});
 
 		test('should set', function () {
 			this.notActiveMenuItem.setActive();
 			menuItem.setActive();
-
 			assert.equal(this.notActiveMenuItem.model.get('active'), true, 'not active model to true');
 			assert.equal(menuItem.model.get('active'), true, 'active model to true');
 		});
 
 		test('should emmit app event', function () {
-			// temporary there is no app.vents
+			var ventsSpy = sinon.spy(App.vents, 'trigger');
+			this.notActiveMenuItem.setActive();
+
+			console.dir(ventsSpy);
+
+			assert.ok(ventsSpy.calledOnce);
+			assert.deepEqual(ventsSpy.args[0], ['app.memnu-item-activated', this.notActiveMenuItem], 'with right arguments');
+
+			ventsSpy.restore();
 		});
 
 	});
