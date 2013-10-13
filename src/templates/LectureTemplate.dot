@@ -1,0 +1,12 @@
+<div class="b-lecture__title">{{=it.title}}</div>
+<div class="b-lecture__description">{{=it.description}}</div>
+{{?(it.videoUrl || it.presentationUrl)}}
+<ul class="b-lecture__links-list">
+	{{?it.presentationUrl}}
+	<li class="b-lecture__link b-lecture__link_type_presentation"><a href="{{=it.presentationUrl}}">{{=it.presentationUrl}}</a></li>
+	{{?}}
+	{{?it.videoUrl}}
+	<li class="b-lecture__link b-lecture__link_type_video"><a href="{{=it.videoUrl}}">{{=it.videoUrl}}</a></li>
+	{{?}}
+</ul>
+{{?}}
