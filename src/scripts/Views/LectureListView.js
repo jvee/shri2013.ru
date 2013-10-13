@@ -1,21 +1,27 @@
-App.LectureListView = Backbone.View.extend({
+;(function (window, $, App) {
 
-	tagName: 'section',
+	'use strict';
 
-	className: 'b-lecture-list',
+	App.LectureListView = Backbone.View.extend({
 
-	render: function () {
-		this.collection.each(this.addLecture, this);
+		tagName: 'section',
 
-		return this;
-	},
+		className: 'b-lecture-list',
 
-	addLecture: function (model) {
-		var lectureView = new App.LectureView({ model: model});
+		render: function () {
+			this.collection.each(this.addLecture, this);
 
-		this.el.appendChild(lectureView.render().el);
+			return this;
+		},
 
-		return this;
-	}
+		addLecture: function (model) {
+			var lectureView = new App.LectureView({ model: model});
 
-});
+			this.el.appendChild(lectureView.render().el);
+
+			return this;
+		}
+
+	});
+
+})(this, jQuery, App = window.App || {}, undefined);

@@ -1,7 +1,13 @@
-App.LectureCollection = Backbone.Collection.extend({
+;(function (window, $, App) {
 
-	model: App.LectureModel,
+	'use strict';
 
-	comparator: 'title'
+	App.LectureCollection = Backbone.Collection.extend({
 
-});
+		model: App.LectureModel,
+
+		comparator: 'title'
+
+	});
+
+})(this, jQuery, App = window.App || {}, undefined);

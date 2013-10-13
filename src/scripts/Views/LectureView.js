@@ -1,14 +1,20 @@
-App.LectureView = Backbone.View.extend({
+;(function (window, $, App) {
 
-	tagName: 'article',
+	'use strict';
 
-	className: 'b-lecture',
+	App.LectureView = Backbone.View.extend({
 
-	template: tmpl['LectureTemplate'],
+		tagName: 'article',
 
-	render: function () {
-		this.el.innerHTML = this.template(this.model.toJSON());
+		className: 'b-lecture',
 
-		return this;
-	}
-});
+		template: tmpl['LectureTemplate'],
+
+		render: function () {
+			this.el.innerHTML = this.template(this.model.toJSON());
+
+			return this;
+		}
+	});
+
+})(this, jQuery, App = window.App || {}, undefined);

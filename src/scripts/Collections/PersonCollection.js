@@ -1,7 +1,13 @@
-App.PersonCollection = Backbone.Collection.extend({
+;(function (window, $, App) {
 
-	model: App.PersonModel,
+	'use strict';
 
-	comparator: 'name'
+	App.PersonCollection = Backbone.Collection.extend({
 
-});
+		model: App.PersonModel,
+
+		comparator: 'name'
+
+	});
+
+})(this, jQuery, App = window.App || {}, undefined);

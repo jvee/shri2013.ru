@@ -1,14 +1,16 @@
-App.LectureModel = Backbone.Model.extend({
+;(function (window, $, App) {
 
-	defaults: {
-		title : '',
-		description: '',
-		presentationUrl: '',
-		videoUrl: ''
-	},
+	'use strict';
 
-	initialize: function () {
+	App.LectureModel = Backbone.Model.extend({
 
-	}
+		defaults: {
+			title : '',
+			description: '',
+			presentationUrl: '',
+			videoUrl: ''
+		}
 
-});
+	});
+
+})(this, jQuery, App = window.App || {}, undefined);
