@@ -1,12 +1,24 @@
-<div class="b-person__name">{{=it.name}}</div>
-{{?it.photo}}
-<img class="b-person__photo" src="{{=it.photo}}" alt="{{=it.name}}">
-{{?}}
-<div class="b-person__about">{{= it.about}}</div>
-{{?it.profiles}}
-<ul class="b-person__profile-list">
-	{{~it.profiles :profile:index}}
-		<li class="b-person__profile-item"><a href="{{=profile.link}}">{{=profile.name}}</a></li>
-	{{~}}
-</ul>
-{{?}}
+<div class="b-person__title b-block__title">
+	<h2 class="b-block__header">{{=it.name}}</h2>
+
+	{{?it.profiles}}
+	<ul class="b-person__link-list b-block__link-list">
+		{{~it.profiles :profile:index}}
+			<li class="b-person__link-item b-person__link-item_type_{{=profile.name.toLowerCase()}} b-block__link-item"><a href="{{=profile.link}}">{{=profile.name}}</a></li>
+		{{~}}
+	</ul>
+	{{?}}
+
+</div>
+
+<div class="b-block__content">
+	
+	{{?it.photo}}
+	<img class="b-person__photo" src="{{=it.photo}}" alt="{{=it.name}}">
+	{{?}}
+
+	<div class="b-person__about b-text">{{= it.about}}</div>
+
+</div>
+
+
