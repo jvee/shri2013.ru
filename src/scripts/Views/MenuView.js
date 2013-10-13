@@ -1,21 +1,27 @@
-App.MenuView = Backbone.View.extend({
+;(function (window, $, App) {
 
-	tagName: 'ul',
+	'use strict';
 
-	className: 'b-menu',
+	App.MenuView = Backbone.View.extend({
 
-	render: function () {
-		this.collection.each(this.addItem, this);
+		tagName: 'ul',
 
-		return this;
-	},
+		className: 'b-menu',
 
-	addItem: function (model) {
-		var menuItemView = new App.MenuItemView({ model: model});
+		render: function () {
+			this.collection.each(this.addItem, this);
 
-		this.el.appendChild(menuItemView.render().el);
+			return this;
+		},
 
-		return this;
-	}
+		addItem: function (model) {
+			var menuItemView = new App.MenuItemView({ model: model});
 
-});
+			this.el.appendChild(menuItemView.render().el);
+
+			return this;
+		}
+
+	});
+
+})(this, jQuery, App = window.App || {}, undefined);

@@ -1,14 +1,16 @@
-App.PersonModel = Backbone.Model.extend({
+;(function (window, $, App) {
 
-	defaults: {
-		name : '',
-		photo: '',
-		about: '',
-		profiles: {}
-	},
+	'use strict';
 
-	initialize: function () {
+	App.PersonModel = Backbone.Model.extend({
 
-	}
+		defaults: {
+			name : '',
+			photo: '',
+			about: '',
+			profiles: {}
+		}
 
-});
+	});
+
+})(this, jQuery, App = window.App || {}, undefined);

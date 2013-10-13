@@ -1,15 +1,17 @@
-App.MenuItemModel = Backbone.Model.extend({
+;(function (window, $, App) {
 
-	defaults: {
-		index : 0,
-		title: '',
-		url: '/',
-		type: 'StaticView',
-		active: false
-	},
+	'use strict';
 
-	initialize: function () {
+	App.MenuItemModel = Backbone.Model.extend({
 
-	}
+		defaults: {
+			index : 0,
+			title: '',
+			url: '/',
+			type: 'StaticView',
+			active: false
+		}
 
-});
+	});
+
+})(this, jQuery, App = window.App || {}, undefined);

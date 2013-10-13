@@ -10,7 +10,7 @@ suite('AppView', function () {
 
 		this.app = new App.AppView({
 			el: document.createElement('body'),
-			data: App.data
+			data: fixtures.appData
 		});
 	});
 
@@ -113,7 +113,7 @@ suite('AppView', function () {
 			});
 
 			test('should render', function () {
-				assert.equal(this.app.el.innerHTML, tmpl.AppTemplate(), 'right HTML');
+				assert.equal(this.app.el.innerHTML, App.templates.AppTemplate(), 'right HTML');
 			});
 
 			test('should return', function () {

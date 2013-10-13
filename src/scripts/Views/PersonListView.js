@@ -1,21 +1,27 @@
-App.PersonListView = Backbone.View.extend({
+;(function (window, $, App) {
 
-	tagName: 'section',
+	'use strict';
 
-	className: 'b-person-list',
+	App.PersonListView = Backbone.View.extend({
 
-	render: function () {
-		this.collection.each(this.addPerson, this);
+		tagName: 'section',
 
-		return this;
-	},
+		className: 'b-person-list',
 
-	addPerson: function (model) {
-		var personView = new App.PersonView({ model: model });
+		render: function () {
+			this.collection.each(this.addPerson, this);
 
-		this.el.appendChild(personView.render().el);
+			return this;
+		},
 
-		return this;
-	}
+		addPerson: function (model) {
+			var personView = new App.PersonView({ model: model });
 
-});
+			this.el.appendChild(personView.render().el);
+
+			return this;
+		}
+
+	});
+
+})(this, jQuery, App = window.App || {}, undefined);

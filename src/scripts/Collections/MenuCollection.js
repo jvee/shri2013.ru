@@ -1,7 +1,13 @@
-App.MenuCollection = Backbone.Collection.extend({
+;(function (window, $, App) {
 
-	model: App.MenuItemModel,
+	'use strict';
 
-	comparator: 'index'
+	App.MenuCollection = Backbone.Collection.extend({
 
-});
+		model: App.MenuItemModel,
+
+		comparator: 'index'
+
+	});
+
+})(this, jQuery, App = window.App || {}, undefined);

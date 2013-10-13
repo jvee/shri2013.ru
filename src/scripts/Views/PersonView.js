@@ -1,14 +1,20 @@
-App.PersonView = Backbone.View.extend({
+;(function (window, $, App) {
 
-	tagName: 'article',
+	'use strict';
 
-	className: 'b-person',
+	App.PersonView = Backbone.View.extend({
 
-	template: tmpl['PersonTemplate'],
+		tagName: 'article',
 
-	render: function () {
-		this.el.innerHTML = this.template(this.model.toJSON());
+		className: 'b-person',
 
-		return this;
-	}
-});
+		template: App.templates['PersonTemplate'],
+
+		render: function () {
+			this.el.innerHTML = this.template(this.model.toJSON());
+
+			return this;
+		}
+	});
+
+})(this, jQuery, App = window.App || {}, undefined);
