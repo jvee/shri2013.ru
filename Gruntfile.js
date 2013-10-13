@@ -139,7 +139,7 @@ module.exports = function (grunt) {
 
 		mocha: {
 			test: {
-				src: ['test/**/*.html'],
+				src: ['test/spec-runner.html'],
 				options: {
 					bail: true,
 					log: true,
