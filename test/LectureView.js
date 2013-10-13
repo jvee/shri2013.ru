@@ -24,8 +24,8 @@ suite('LectureView', function () {
 
 	suite('#render()', function () {
 
-		setup(function () {			
-			testTemplate = tmpl.LectureTemplate(fixtures.lecture1);
+		setup(function () {
+			testTemplate = App.templates.LectureTemplate(fixtures.lecture1);
 			lecture.render();
 		});
 

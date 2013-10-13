@@ -8,7 +8,7 @@
 
 		className: 'b-lecture',
 
-		template: tmpl['LectureTemplate'],
+		template: App.templates['LectureTemplate'],
 
 		render: function () {
 			this.el.innerHTML = this.template(this.model.toJSON());

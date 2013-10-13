@@ -29,7 +29,7 @@ suite('MenuView', function () {
 
 			for (var x = 0; x < fixtures.menu.length; x++) {
 				this.testTemplate += '<li class="b-menu-item">';
-				this.testTemplate += tmpl.MenuItemTemplate(fixtures.menu[x]);
+				this.testTemplate += App.templates.MenuItemTemplate(fixtures.menu[x]);
 				this.testTemplate += '</li>';
 			}
 

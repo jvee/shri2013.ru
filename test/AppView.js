@@ -113,7 +113,7 @@ suite('AppView', function () {
 			});
 
 			test('should render', function () {
-				assert.equal(this.app.el.innerHTML, tmpl.AppTemplate(), 'right HTML');
+				assert.equal(this.app.el.innerHTML, App.templates.AppTemplate(), 'right HTML');
 			});
 
 			test('should return', function () {

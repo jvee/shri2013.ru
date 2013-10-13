@@ -25,7 +25,7 @@ suite('PersonView', function () {
 	suite('#render()', function () {
 
 		setup(function () {
-			testTemplate = tmpl.PersonTemplate(fixtures.person1);
+			testTemplate = App.templates.PersonTemplate(fixtures.person1);
 			person.render();
 		});
 

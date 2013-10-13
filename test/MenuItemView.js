@@ -29,7 +29,7 @@ suite('MenuItemView', function () {
 	suite('#render()', function () {
 
 		setup(function () {
-			testTemplate = tmpl.MenuItemTemplate(fixtures.menuItem1);
+			testTemplate = App.templates.MenuItemTemplate(fixtures.menuItem1);
 			menuItem.render();
 		});
 

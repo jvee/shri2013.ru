@@ -29,7 +29,7 @@ suite('LectureListView', function () {
 
 			for (var x = 0; x < fixtures.lectures.length; x++) {
 				this.testTemplate += '<article class="b-lecture">';
-				this.testTemplate += tmpl.LectureTemplate(fixtures.lectures[x]);
+				this.testTemplate += App.templates.LectureTemplate(fixtures.lectures[x]);
 				this.testTemplate += '</article>';
 			}
 

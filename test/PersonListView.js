@@ -29,7 +29,7 @@ suite('PersonListView', function () {
 
 			for (var x = 0; x < fixtures.persons.length; x++) {
 				this.testTemplate += '<article class="b-person">';
-				this.testTemplate += tmpl.PersonTemplate(fixtures.persons[x]);
+				this.testTemplate += App.templates.PersonTemplate(fixtures.persons[x]);
 				this.testTemplate += '</article>';
 			}
 

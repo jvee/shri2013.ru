@@ -8,7 +8,7 @@
 
 		className: 'b-person',
 
-		template: tmpl['PersonTemplate'],
+		template: App.templates['PersonTemplate'],
 
 		render: function () {
 			this.el.innerHTML = this.template(this.model.toJSON());

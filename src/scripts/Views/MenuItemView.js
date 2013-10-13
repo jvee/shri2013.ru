@@ -8,7 +8,7 @@
 
 		className: 'b-menu-item',
 
-		template: tmpl['MenuItemTemplate'],
+		template: App.templates['MenuItemTemplate'],
 
 		events: {
 			'click .b-menu-item__link': 'setActive'

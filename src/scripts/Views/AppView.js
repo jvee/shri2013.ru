@@ -6,7 +6,7 @@
 
 		el: document.body,
 
-		template: tmpl['AppTemplate'],
+		template: App.templates['AppTemplate'],
 
 		initialize: function (options) {
 			this.menu = new App.MenuCollection(options.data.menu || []);

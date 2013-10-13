@@ -103,7 +103,7 @@ module.exports = function (grunt) {
 
 			test: {
 				options: {
-					variable: 'tmpl',
+					variable: 'App.templates',
 				},
 				src: ['src/templates/**/*.dot'],
 				dest: 'test/fixtures/templates.js'
