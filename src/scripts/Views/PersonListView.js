@@ -11,9 +11,9 @@ App.PersonListView = Backbone.View.extend({
 	},
 
 	addPerson: function (model) {
-		var personView = new App.PersonView({ model: model});
+		var personView = new App.PersonView({ model: model });
 
-		this.el.innerHTML += personView.render().el.innerHTML;
+		this.el.appendChild(personView.render().el);
 
 		return this;
 	}
