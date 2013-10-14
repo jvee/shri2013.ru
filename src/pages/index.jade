@@ -7,8 +7,8 @@ head
 
 	if deploy == true
 		script!= 'window.App = {version:\'' + version + '\'}'
-		script(src="/#{rootDir}/js/data.min.js")
-		link(href="/#{rootDir}/css/style.css", rel="stylesheet", type="text/css", charset="utf-8")
+		script(src="#{rootDir}/js/data.min.js")
+		link(href="#{rootDir}/css/style.css", rel="stylesheet", type="text/css", charset="utf-8")
 	else
 		script(src="/js/data.js")
 		link(href="/css/style.css", rel="stylesheet", type="text/css", charset="utf-8")
@@ -19,8 +19,8 @@ body
 
 	if deploy == true
 		script(src="http://yandex.st/jquery/1.10.2/jquery.min.js")
-		script window.jQuery || document.write('<script src="/#{rootDir}/js/jquery.min.js"><\/script>');
-		script(src="/#{rootDir}/js/app.min.js")
+		script window.jQuery || document.write('<script src="#{rootDir}/js/jquery.min.js"><\/script>');
+		script(src="#{rootDir}/js/app.min.js")
 	else 
 		script(src="/js/lib/jquery.js")
 		script(src="/js/lib/underscore.js")

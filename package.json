@@ -1,14 +1,7 @@
 {
   "name": "shri2013.ru",
-  "version": "0.0.0",
-  "description": "ERROR: No README.md file found!",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "grunt test"
-  },
+  "version": "0.11.0",
+  "description": "Экзаменационное задание для Яндекс ШРИ 2013 в Москве",
   "repository": {
     "type": "git",
     "url": "https://github.com/jvee/shri2013.ru.git"
@@ -21,7 +14,6 @@
     "Школа разработки интерфейсов"
   ],
   "author": "Ivan Zasimoff",
-  "license": "BSD",
   "dependencies": {
     "bower": "~1.2.7",
     "grunt": "~0.4.0",
