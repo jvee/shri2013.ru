@@ -1,5 +1,5 @@
 {
-  "name": "shri2013",
+  "name": "shri2013.ru",
   "version": "0.0.0",
   "authors": [
     "Ivan Zasimoff"
@@ -20,9 +20,7 @@
     "backbone": "~1.0.0",
     "underscore": "~1.5.2",
     "mocha": "~1.13.0",
-    "sinon": "~1.7.3",
     "chai": "~1.8.0",
-    "parsleyjs": "~1.1.18",
     "sinonjs": "~1.7.1"
   }
 }
