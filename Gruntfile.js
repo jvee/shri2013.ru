@@ -87,7 +87,25 @@ module.exports = function (grunt) {
 					data: {
 						deploy: true,
 						version: '<%= pkg.version %>',
-						rootDir: '<%= pkg.name %>'
+						rootDir: '/<%= pkg.name %>'
+					}
+				},
+				files: [{
+					expand: true,
+					cwd: 'src/pages/',
+					src: '**/*.jade',
+					dest: 'deploy/',
+					ext: '.html',
+					filter: 'isFile'
+				}]
+			},
+
+			test: {
+				options: {
+					data: {
+						deploy: true,
+						version: '<%= pkg.version %>',
+						rootDir: ''
 					}
 				},
 				files: [{
@@ -327,7 +345,7 @@ module.exports = function (grunt) {
 		'uglify',
 		'clean'
 	]);
-	grunt.registerTask('testserver', ['connect:testServer']);
+	grunt.registerTask('testserver', ['jade:test', 'connect:testServer']);
 	grunt.registerTask('deploy', ['gh-pages']);
 
 
