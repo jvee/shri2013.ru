@@ -15,7 +15,7 @@ module.exports = function (grunt) {
 					// open: true,
 					debug: true,
 					middleware: function(connect, options) {
-						var index = require('fs').readFileSync(options.base + '/index.html');					
+						var index = require('fs').readFileSync(options.base + '/index.html');			
 						return [
 							connect.static(options.base),
 							function(req, res, next) {
@@ -35,7 +35,7 @@ module.exports = function (grunt) {
 					open: true,
 					debug: true,
 					middleware: function(connect, options) {
-						var index = require('fs').readFileSync(options.base + '/index.html');					
+						var index = require('fs').readFileSync(options.base + '/index.html');		
 						return [
 							connect.static(options.base),
 							function(req, res, next) {
@@ -379,6 +379,7 @@ module.exports = function (grunt) {
 		'stylus:dep',
 		'csso',
 		'copy:scriptsDep',
+		'copy:imagesDep',
 		'copy:bowerDep',
 		'copy:jqueryDep',
 		'copy:index404',
