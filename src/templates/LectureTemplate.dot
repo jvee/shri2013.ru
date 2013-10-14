@@ -1,0 +1,25 @@
+<div class="b-lecture__title b-block__title">
+	<h2 class="b-lecture__header b-block__header">{{=it.title}}</h2>
+
+	{{?(it.videoUrl || it.presentationUrl)}}
+	<ul class="b-lecture__links-list b-block__link-list">
+		{{?it.presentationUrl}}
+		<li class="b-lecture__link b-lecture__link_type_presentation b-block__link-item"><a href="{{=it.presentationUrl}}">Презентация</a></li>
+		{{?}}
+		{{?it.videoUrl}}
+		<li class="b-lecture__link b-lecture__link_type_video b-block__link-item"><a href="{{=it.videoUrl}}">Видео</a></li>
+		{{?}}
+	</ul>
+	{{?}}
+
+	{{?it.lecturer}}
+	<h3 class="b-lecture__lecturer b-block__subheader">{{=it.lecturer}}</h3>
+	{{?}}
+</div>
+
+
+<div class="b-block__content b-text">
+	{{?it.description}}
+		{{=it.description}}
+	{{?}}
+</div>
