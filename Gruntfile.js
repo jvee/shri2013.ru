@@ -14,6 +14,15 @@ module.exports = function (grunt) {
 					keepalive: true,
 					// open: true,
 					debug: true,
+					middleware: function(connect, options) {
+						var index = require('fs').readFileSync(options.base + '/index.html');					
+						return [
+							connect.static(options.base),
+							function(req, res, next) {
+								res.end(index);
+							}
+						];
+					},
 					livereload: true
 				}
 			},
@@ -25,6 +34,15 @@ module.exports = function (grunt) {
 					keepalive: true,
 					open: true,
 					debug: true,
+					middleware: function(connect, options) {
+						var index = require('fs').readFileSync(options.base + '/index.html');					
+						return [
+							connect.static(options.base),
+							function(req, res, next) {
+								res.end(index);
+							}
+						];
+					},
 					livereload: false
 				}
 			}
@@ -219,6 +237,12 @@ module.exports = function (grunt) {
 				files: {
 					'deploy/js/jquery.min.js': ['components/jquery/jquery.min.js']
 				}
+			},
+
+			index404: {
+				files: {
+					'deploy/404.html': ['deploy/index.html']
+				}
 			}
 
 		},
@@ -341,6 +365,7 @@ module.exports = function (grunt) {
 		'copy:scriptsDep',
 		'copy:bowerDep',
 		'copy:jqueryDep',
+		'copy:index404',
 		'concat',
 		'uglify',
 		'clean'
