@@ -5,6 +5,7 @@
 		routes: {
 			'': 'index',
 			'students/': 'students',
+			'students/:name': 'students',
 			'lectures/': 'lectures'
 		},
 
@@ -16,8 +17,11 @@
 			App.vents.trigger('app.route', '/');
 		},
 
-		students: function () {
+		students: function (name) {
 			App.vents.trigger('app.route', '/students/');
+			if (name) {
+				App.vents.trigger('app.student', name);
+			}
 		},
 
 		lectures: function () {
