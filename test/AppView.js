@@ -64,19 +64,6 @@ suite('AppView', function () {
 
 		});
 
-		suite('#bindEvents()', function () {
-
-			test('should call methods', function () {
-				var spy = sinon.spy(App.vents, 'on');
-				this.app.bindEvents();
-
-				assert.equal(spy.calledOnce, true);
-
-				spy.restore();
-			});
-
-		});
-
 		suite('#parsePages()', function () {
 
 			test('should update #pages.length', function () {
@@ -85,26 +72,26 @@ suite('AppView', function () {
 
 		});
 
-		suite('#renderPage()', function () {
+		// suite('#renderPage()', function () {
 
-			test('should set attributes', function () {
-				assert.isNotNull(this.app.currentPageView, '#currentPageView');
-			});
+		// 	test('should set attributes', function () {
+		// 		assert.isNotNull(this.app.currentPageView, '#currentPageView');
+		// 	});
 
-			test('should add content', function () {
-				assert.notEqual(this.app.pageEl.innerHTML, '', 'to #headerEl');
-			});
+		// 	test('should add content', function () {
+		// 		assert.notEqual(this.app.pageEl.innerHTML, '', 'to #headerEl');
+		// 	});
 
-			test('should call methods', function () {
-				var spy = sinon.spy(this.app.currentPageView, 'remove');
-				this.app.renderPage(this.app.menu.models[2]);
+		// 	test('should call methods', function () {
+		// 		var spy = sinon.spy(this.app.currentPageView, 'remove');
+		// 		this.app.renderPage(this.app.menu.models[2]);
 
-				assert.equal(spy.calledOnce, true);
+		// 		assert.equal(spy.calledOnce, true);
 
-				spy.restore();
-			});
+		// 		spy.restore();
+		// 	});
 
-		});
+		// });
 
 		suite('#render()', function () {
 
@@ -126,9 +113,10 @@ suite('AppView', function () {
 
 	suite('Events', function () {
 		
-		test('should #renderPage on App.vent\'s "app.memnu-item-activated" event', function () {
-			App.vents.trigger('app.memnu-item-activated', this.app.menu.models[2]);
-			assert.ok(this.renderPageSpy.calledTwice);
+		test('should #renderPage on App.vent\'s "app.route" event', function () {
+			App.vents.trigger('app.route', this.app.menu.models[2]);
+			 console.dir(this.renderPageSpy);
+			assert.ok(this.renderPageSpy.calledOnce);
 		});
 
 	});

@@ -66,27 +66,9 @@ suite('MenuItemView', function () {
 				this.notActiveMenuItem.setActive();
 
 				assert.ok(ventsSpy.calledOnce);
-				assert.deepEqual(ventsSpy.args[0], ['app.memnu-item-activated', this.notActiveMenuItem.model], 'with right arguments');
+				assert.deepEqual(ventsSpy.args[0], ['app.navigate', '/students', {trigger: true}], 'with right arguments');
 
 				ventsSpy.restore();
-			});
-
-		});
-
-		suite('#deactivate()', function () {
-
-			setup(function () {
-				this.menuItem = new App.MenuItemView({model: new Backbone.Model(fixtures.menuItem1)});
-			});
-
-			test('should change model\'s attr active to false', function () {
-				this.menuItem.deactivate();
-				assert.equal(this.menuItem.model.get('active'), false);
-			});
-
-			test('should do nothing if model attr same ass view model', function () {
-				this.menuItem.deactivate(this.menuItem.model);
-				assert.equal(this.menuItem.model.get('active'), true);
 			});
 
 		});
@@ -114,16 +96,6 @@ suite('MenuItemView', function () {
 			assert.ok(this.menuItem.render.calledOnce);
 
 			this.renderSpy.restore();
-		});
-
-		test('should #deactivate on App.vent\'s "app.memnu-item-activated" event', function () {
-			this.deactivateSpy = sinon.spy(App.MenuItemView.prototype, 'deactivate');
-			this.menuItem = new App.MenuItemView({model: new Backbone.Model(fixtures.menuItem1)});
-			App.vents.trigger('app.memnu-item-activated');
-
-			assert.ok(this.deactivateSpy.calledOnce);
-
-			this.deactivateSpy.restore();
 		});
 
 	});

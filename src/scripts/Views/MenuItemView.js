@@ -17,7 +17,7 @@
 		initialize: function () {
 			this.model.on('change', this.render, this);
 			if (App.vents) {
-				App.vents.on('app.memnu-item-activated', this.deactivate ,this);
+				App.vents.on('app.route', this.toggleActive, this);
 			}
 		},
 
@@ -27,21 +27,26 @@
 			return this;
 		},
 
+		toggleActive: function (url) {
+			if (this.model.get('url') === url) {
+				this.model.set('active', true);
+			} else {
+				this.model.set('active', false);
+			}
+		},
+
 		setActive: function (event) {
 			if (event) event.preventDefault();
 
 			var isActive = this.model.get('active');
 
 			if (isActive) return;
+		
+			if (App.vents) {
+				App.vents.trigger('app.navigate', this.model.get('url'),  {trigger: true});
+			}
 
-			if (App.vents) App.vents.trigger('app.memnu-item-activated', this.model);
 			this.model.set('active', true);
-		},
-
-		deactivate: function (activeMenuItemModel) {
-			if (activeMenuItemModel && activeMenuItemModel === this.model) return;
-
-			this.model.set('active', false);
 		}
 
 
