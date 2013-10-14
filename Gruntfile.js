@@ -217,6 +217,22 @@ module.exports = function (grunt) {
 				filter: 'isFile'
 			},
 
+			images: {
+				expand: true,
+				cwd: 'src/images/',
+				src: ['**/*.png'],
+				dest: 'site/img/',
+				filter: 'isFile'
+			},
+
+			imagesDep: {
+				expand: true,
+				cwd: 'src/images/',
+				src: ['**/*.png'],
+				dest: 'deploy/img/',
+				filter: 'isFile'
+			},
+
 			scriptsDep: {
 				expand: true,
 				cwd: 'src/scripts',
