@@ -95,7 +95,7 @@ module.exports = function (grunt) {
 		dot: {
 			dev: {
 				options: {
-					variable: 'tmpl', // namespace
+					variable: 'App.templates',
 				},
 				src: ['src/templates/**/*.dot'],
 				dest: 'site/js/templates.js'

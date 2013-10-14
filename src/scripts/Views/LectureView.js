@@ -6,7 +6,7 @@
 
 		tagName: 'article',
 
-		className: 'b-lecture',
+		className: 'b-lecture b-block',
 
 		template: App.templates['LectureTemplate'],
 

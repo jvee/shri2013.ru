@@ -64,21 +64,24 @@ fixtures.persons = [fixtures.person1, fixtures.person2, fixtures.person3];
 
 fixtures.lecture1 = {
 	title : 'Регулярные выражения',
-	description: 'Алексей Бережной',
+	lecturer: 'Алексей Бережной',
+	description: 'Чем могут быть полезны регулярные выражения для разработчика интерфейсов? О каких возможностях следует знать больше? Где находятся «подводные камни» и как обойти их в различных реализациях? И, наконец, что делать, если возможностей встроенной реализации регулярных выражений недостаточно',
 	presentationUrl: 'http://yadi.sk/d/5uaBj1Kh9pYRV',
 	videoUrl: 'http://yadi.sk/d/AU6yRkm89oATJ'
 };
 
 fixtures.lecture2 = {
 	title : 'Языки программирования',
-	description: 'Денис Бугарчев',
+	lecturer: 'Денис Бугарчев',
+	description: 'Существует значительно больше, чем один язык программирования, и даже больше, чем два. А есть ещё и такие языки, которые и языками с трудом можно назвать. Лекция посвящена тому, как не запутаться в существующем изобилии и зачем вообще смотреть на какие-то языки, кроме своего любимого.',		
 	presentationUrl: 'http://yadi.sk/d/my2Yax_s9pX7Y',
 	videoUrl: 'http://yadi.sk/d/m1QrFolf9o43i'
 };
 
 fixtures.lecture3 = {
 	title : 'Безопасность веб-приложений',
-	description: 'Тарас Иващенко',
+	lecturer: 'Тарас Иващенко',
+	description: 'Подробный разбор самых популярных угроз и методов защиты безопасности веб-приложений (OWASP Top 10).',
 	presentationUrl: 'http://yadi.sk/d/IvhR9B0d9pW9b',
 	videoUrl: 'http://yadi.sk/d/Py0p5T629mVC4'
 };
@@ -119,7 +122,7 @@ fixtures.appData = {
 		title: 'О ШРИ',
 		url: '/',
 		type: 'StaticView',
-		active: true
+		active: false
 	}, {
 		index : 1,
 		title: 'Студенты',
@@ -131,7 +134,7 @@ fixtures.appData = {
 		title: 'Лекции',
 		url: '/lectures/',
 		type: 'LectureListView',
-		active: false
+		active: true
 	}],
 
 	pages: [{
@@ -145,17 +148,20 @@ fixtures.appData = {
 		type: 'LectureCollection',
 		data: [{
 			title : 'Регулярные выражения',
-			description: 'Алексей Бережной',
+			lecturer: 'Алексей Бережной',
+			description: 'Чем могут быть полезны регулярные выражения для разработчика интерфейсов? О каких возможностях следует знать больше? Где находятся «подводные камни» и как обойти их в различных реализациях? И, наконец, что делать, если возможностей встроенной реализации регулярных выражений недостаточно',
 			presentationUrl: 'http://yadi.sk/d/5uaBj1Kh9pYRV',
 			videoUrl: 'http://yadi.sk/d/AU6yRkm89oATJ'
 		}, {
 			title : 'Языки программирования',
-			description: 'Денис Бугарчев',
+			lecturer: 'Денис Бугарчев',
+			description: 'Существует значительно больше, чем один язык программирования, и даже больше, чем два. А есть ещё и такие языки, которые и языками с трудом можно назвать. Лекция посвящена тому, как не запутаться в существующем изобилии и зачем вообще смотреть на какие-то языки, кроме своего любимого.',
 			presentationUrl: 'http://yadi.sk/d/my2Yax_s9pX7Y',
 			videoUrl: 'http://yadi.sk/d/m1QrFolf9o43i'
 		}, {
 			title : 'Безопасность веб-приложений',
-			description: 'Тарас Иващенко',
+			lecturer: 'Тарас Иващенко',
+			description: 'Подробный разбор самых популярных угроз и методов защиты безопасности веб-приложений (OWASP Top 10).',
 			presentationUrl: 'http://yadi.sk/d/IvhR9B0d9pW9b',
 			videoUrl: 'http://yadi.sk/d/Py0p5T629mVC4'
 		}]
