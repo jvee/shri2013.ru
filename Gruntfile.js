@@ -16,6 +16,17 @@ module.exports = function (grunt) {
 					debug: true,
 					livereload: true
 				}
+			},
+			testServer: {
+				options: {
+					port: 8001,
+					hostname: '0.0.0.0',
+					base: 'deploy',
+					keepalive: true,
+					open: true,
+					debug: true,
+					livereload: false
+				}
 			}
 		},
 
@@ -41,7 +52,7 @@ module.exports = function (grunt) {
 
 			pages: {
 				files: ['src/pages/**/*.jade'],
-				tasks: ['jade']
+				tasks: ['jade:dev']
 			},
 
 			templates: {
@@ -51,7 +62,7 @@ module.exports = function (grunt) {
 
 			styles: {
 				files: ['src/styles/**/*.styl'],
-				tasks: ['stylus']
+				tasks: ['stylus:dev']
 			}
 
 		},
@@ -66,6 +77,24 @@ module.exports = function (grunt) {
 					cwd: 'src/pages/',
 					src: '**/*.jade',
 					dest: 'site/',
+					ext: '.html',
+					filter: 'isFile'
+				}]
+			},
+
+			dep: {
+				options: {
+					data: {
+						deploy: true,
+						version: '<%= pkg.version %>',
+						rootDir: '<%= pkg.name %>'
+					}
+				},
+				files: [{
+					expand: true,
+					cwd: 'src/pages/',
+					src: '**/*.jade',
+					dest: 'deploy/',
 					ext: '.html',
 					filter: 'isFile'
 				}]
@@ -89,6 +118,21 @@ module.exports = function (grunt) {
 					ext: '.css',
 					filter: 'isFile'
 				}]
+			},
+
+			dep: {
+				options: {
+					paths: ['src/styles/blocks', 'src/styles/utils'],
+					compress: false
+				},
+				files: [{
+					expand: true,
+					cwd: 'src/styles/',
+					src: ['**/*.styl', '!blocks/**', '!utils/**'],
+					dest: 'deploy/css/tmp/',
+					ext: '.css',
+					filter: 'isFile'
+				}]
 			}
 		},
 
@@ -107,6 +151,14 @@ module.exports = function (grunt) {
 				},
 				src: ['src/templates/**/*.dot'],
 				dest: 'test/fixtures/templates.js'
+			},
+
+			dep: {
+				options: {
+					variable: 'App.templates',
+				},
+				src: ['src/templates/**/*.dot'],
+				dest: 'deploy/js/tmp/templates.js'
 			}
 		},
 
@@ -127,7 +179,30 @@ module.exports = function (grunt) {
 				dest: 'site/js/lib/',
 				flatten: true,
 				filter: 'isFile'
+			},
+
+			scriptsDep: {
+				expand: true,
+				cwd: 'src/scripts',
+				src: ['**/*.js', '!data.js'],
+				dest: 'deploy/js/tmp',
+				filter: 'isFile'
+			},
+
+			bowerDep: {
+				expand: true,
+				cwd: 'components/',
+				src: ['*/*.js', '!chai/**', '!sinonjs/**', '!mocha/**', '!**/index.js', '!*/*min.js', '!jquery/**', '!doT/**'],
+				dest: 'deploy/js/tmp/lib/',
+				flatten: true,
+				filter: 'isFile'
+			},
+			jqueryDep: {
+				files: {
+					'deploy/js/jquery.min.js': ['components/jquery/jquery.min.js']
+				}
 			}
+
 		},
 
 		concurrent: {
@@ -147,6 +222,55 @@ module.exports = function (grunt) {
 					run: true
 				}
 			}
+		},
+
+		csso: {
+			dep: {
+				options: {
+					report: 'gzip'
+				},
+				files: {
+					'deploy/css/style.css': ['deploy/css/tmp/style.css']
+				}
+			}
+		},
+
+		concat: {
+			dist: {
+				src: [
+					'deploy/js/tmp/lib/underscore.js',
+					'deploy/js/tmp/lib/backbone.js',
+					'deploy/js/tmp/Models/*.js',
+					'deploy/js/tmp/Collections/*.js',
+					'deploy/js/tmp/templates.js',
+					'deploy/js/tmp/Views/*.js',
+					'deploy/js/tmp/app.js'
+				],
+				dest: 'deploy/js/tmp/built.js',
+			}
+		},
+
+		uglify: {
+			dep: {
+				options: {
+					report: 'min'
+				},
+				files: {
+					'deploy/js/app.min.js': ['deploy/js/tmp/built.js'],
+					'deploy/js/data.min.js': ['src/scripts/data.js']
+				}
+			}
+		},
+
+		clean: {
+			dep: ["deploy/js/tmp", "deploy/css/tmp"],
+		},
+
+		'gh-pages': {
+			options: {
+				base: 'deploy/'
+			},
+			src: ['**']
 		}
 
 	});
@@ -175,15 +299,37 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-stylus');
 	// https://github.com/kmiyashiro/grunt-mocha
 	grunt.loadNpmTasks('grunt-mocha');
+	// https://github.com/t32k/grunt-csso
+	grunt.loadNpmTasks('grunt-csso');
+	// https://github.com/gruntjs/grunt-contrib-concat
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	// https://github.com/gruntjs/grunt-contrib-uglify
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	// https://github.com/gruntjs/grunt-contrib-clean
+	grunt.loadNpmTasks('grunt-contrib-clean');
+	// https://github.com/tschaub/grunt-gh-pages
+	grunt.loadNpmTasks('grunt-gh-pages');
 
 
 
 	grunt.registerTask('default', ['copy:bower', 'concurrent:dev']);
 	grunt.registerTask('devserver', ['connect:server']);
 	grunt.registerTask('test', ['mocha']);
+	grunt.registerTask('build', [
+		'jade:dep',
+		'dot:dep',
+		'stylus:dep',
+		'csso',
+		'copy:scriptsDep',
+		'copy:bowerDep',
+		'copy:jqueryDep',
+		'concat',
+		'uglify',
+		'clean'
+	]);
+	grunt.registerTask('testserver', ['connect:testServer']);
+	grunt.registerTask('deploy', ['gh-pages']);
 
-	// speccial task for dev site
-	// special task for deploy site
 
 	
 
