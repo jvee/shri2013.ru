@@ -346,7 +346,7 @@ module.exports = function (grunt) {
 		'clean'
 	]);
 	grunt.registerTask('testserver', ['jade:test', 'connect:testServer']);
-	grunt.registerTask('deploy', ['gh-pages']);
+	grunt.registerTask('deploy', ['jade:dep', 'gh-pages']);
 
 
 	
