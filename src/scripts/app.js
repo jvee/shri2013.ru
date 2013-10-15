@@ -1,37 +1,5 @@
 ;(function (window, $, App) {
 
-	App.Router = Backbone.Router.extend({
-
-		routes: {
-			'': 'index',
-			'students/': 'students',
-			'students/:name': 'students',
-			'lectures/': 'lectures'
-		},
-
-		initialize: function () {
-			App.vents.on('app.navigate', this.navigate, this);
-		},
-
-		index: function () {
-			App.vents.trigger('app.route', '/');
-		},
-
-		students: function (name) {
-			App.vents.trigger('app.route', '/students/');
-			if (name) {
-				App.vents.trigger('app.student', name);
-			}
-		},
-
-		lectures: function () {
-			App.vents.trigger('app.route', '/lectures/');
-		}
-
-	});
-
-	
-
 	App.vents = _.extend({}, Backbone.Events);
 
 	App.app = new App.AppView({

@@ -1,49 +1,50 @@
 doctype 5
 html(lang="en")
-head
-	meta(charset="utf-8")
-	title ШРИ в Москве 2013
+	head
+		meta(charset="utf-8")
+		title ШРИ в Москве 2013
 
 
-	if deploy == true
-		script!= 'window.App = {version:\'' + version + '\'}'
-		script(src="#{rootDir}/js/data.min.js")
-		link(href="#{rootDir}/css/style.css", rel="stylesheet", type="text/css", charset="utf-8")
-	else
-		script(src="/js/data.js")
-		link(href="/css/style.css", rel="stylesheet", type="text/css", charset="utf-8")
+		if deploy == true
+			script!= 'window.App = {version:\'' + version + '\'}'
+			script(src="#{rootDir}/js/data.min.js")
+			link(href="#{rootDir}/css/style.css", rel="stylesheet", type="text/css", charset="utf-8")
+		else
+			script(src="/js/data.js")
+			link(href="/css/style.css", rel="stylesheet", type="text/css", charset="utf-8")
 
-body
+	body
 
-	div.b-app#app
+		div.b-app#app
 
-	if deploy == true
-		script(src="http://yandex.st/jquery/1.10.2/jquery.min.js")
-		script window.jQuery || document.write('<script src="#{rootDir}/js/jquery.min.js"><\/script>');
-		script(src="#{rootDir}/js/app.min.js")
-	else 
-		script(src="/js/lib/jquery.js")
-		script(src="/js/lib/underscore.js")
-		script(src="/js/lib/backbone.js")
+		if deploy == true
+			script(src="http://yandex.st/jquery/1.10.2/jquery.min.js")
+			script window.jQuery || document.write('<script src="#{rootDir}/js/jquery.min.js"><\/script>');
+			script(src="#{rootDir}/js/app.min.js")
+		else 
+			script(src="/js/lib/jquery.js")
+			script(src="/js/lib/underscore.js")
+			script(src="/js/lib/backbone.js")
 
-		script(src="/js/Models/PersonModel.js")
-		script(src="/js/Models/LectureModel.js")
-		script(src="/js/Models/MenuItemModel.js")
-		script(src="/js/Models/StaticModel.js")
+			script(src="/js/Models/PersonModel.js")
+			script(src="/js/Models/LectureModel.js")
+			script(src="/js/Models/MenuItemModel.js")
+			script(src="/js/Models/StaticModel.js")
 
-		script(src="/js/Collections/PersonCollection.js")
-		script(src="/js/Collections/LectureCollection.js")
-		script(src="/js/Collections/MenuCollection.js")
+			script(src="/js/Collections/PersonCollection.js")
+			script(src="/js/Collections/LectureCollection.js")
+			script(src="/js/Collections/MenuCollection.js")
 
-		script(src="/js/templates.js")
+			script(src="/js/templates.js")
 
-		script(src="/js/Views/PersonListView.js")
-		script(src="/js/Views/PersonView.js")
-		script(src="/js/Views/LectureListView.js")
-		script(src="/js/Views/LectureView.js")
-		script(src="/js/Views/MenuItemView.js")
-		script(src="/js/Views/MenuView.js")
-		script(src="/js/Views/StaticView.js")
-		script(src="/js/Views/AppView.js")
+			script(src="/js/Views/PersonListView.js")
+			script(src="/js/Views/PersonView.js")
+			script(src="/js/Views/LectureListView.js")
+			script(src="/js/Views/LectureView.js")
+			script(src="/js/Views/MenuItemView.js")
+			script(src="/js/Views/MenuView.js")
+			script(src="/js/Views/StaticView.js")
+			script(src="/js/Views/AppView.js")
 
-		script(src="/js/app.js")
+			script(src="/js/router.js")
+			script(src="/js/app.js")

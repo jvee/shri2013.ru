@@ -60,13 +60,13 @@ module.exports = function (grunt) {
 				tasks: ['copy:scripts']
 			},
 
-			tests: {
-				files: ['src/scripts/**/*.js', 'test/**/spec.js'],
-				tasks: ['mocha'],
-				options: {
-					atBegin: false
-				}
-			},
+			// tests: {
+			// 	files: ['src/scripts/**/*.js', 'test/**/spec.js'],
+			// 	tasks: ['mocha'],
+			// 	options: {
+			// 		atBegin: false
+			// 	}
+			// },
 
 			pages: {
 				files: ['src/pages/**/*.jade'],
@@ -302,6 +302,7 @@ module.exports = function (grunt) {
 					'deploy/js/tmp/Collections/*.js',
 					'deploy/js/tmp/templates.js',
 					'deploy/js/tmp/Views/*.js',
+					'deploy/js/tmp/router.js',
 					'deploy/js/tmp/app.js'
 				],
 				dest: 'deploy/js/tmp/built.js',
@@ -333,10 +334,10 @@ module.exports = function (grunt) {
 
 	});
 
-	grunt.event.on('watch', function(action, filepath, type) {
-		// if type ===
-		grunt.config.set('copy.scripts.src', filepath.replace('src/scripts/', ''));
-	});
+	// grunt.event.on('watch', function(action, filepath, type) {
+	// 	// if type ===
+	// 	grunt.config.set('copy.scripts.src', filepath.replace('src/scripts/', ''));
+	// });
 
 
 
