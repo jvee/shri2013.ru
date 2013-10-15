@@ -1,6 +1,6 @@
 <div class="b-person__title b-block__title">
 	<h2 class="b-block__header">{{=it.name}}</h2>
-	<a href="#students/{{=it.id}}" class="b-block__linker"></a>
+	<a href="#!/students/{{=it.id}}" class="b-block__linker"></a>
 
 	{{?it.profiles}}
 	<ul class="b-person__link-list b-block__link-list">
