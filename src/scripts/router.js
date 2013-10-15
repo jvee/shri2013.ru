@@ -3,10 +3,10 @@
 	App.Router = Backbone.Router.extend({
 
 		routes: {
-			'': 'index',
-			'students/': 'students',
-			'students/:name': 'students',
-			'lectures/': 'lectures'
+			'(!/)': 'index',
+			'(!/)students(/)': 'students',
+			'(!/)students/:name': 'students',
+			'(!/)lectures(/)': 'lectures'
 		},
 
 		initialize: function () {
