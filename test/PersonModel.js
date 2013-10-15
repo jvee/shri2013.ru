@@ -20,6 +20,7 @@ suite('PersonModel', function () {
 				assert.equal(person.get('photo'), '', 'photo');
 				assert.equal(person.get('about'), '', 'about');
 				assert.deepEqual(person.get('profiles'), {}, 'profiles');
+				assert.equal(person.id = undefined);
 			});
 
 			test('should accept right data', function () {
@@ -30,6 +31,7 @@ suite('PersonModel', function () {
 				assert.equal(person.get('photo'), fixture.photo, 'photo');
 				assert.equal(person.get('about'), fixture.about, 'about');
 				assert.deepEqual(person.get('profiles'), fixture.profiles, 'profiles');
+				assert.equal(person.id, fixture.name.replace(/\s/g, '_'));
 
 			});
 

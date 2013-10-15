@@ -11,7 +11,9 @@
 		template: App.templates['PersonTemplate'],
 
 		render: function () {
-			this.el.innerHTML = this.template(this.model.toJSON());
+			var data = $.extend({id: this.model.id}, this.model.toJSON());
+
+			this.el.innerHTML = this.template(data);
 
 			return this;
 		}

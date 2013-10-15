@@ -46,7 +46,7 @@
 			return this;
 		},
 
-		renderPage: function (activeMenuItem, subItem, subParamName) {
+		renderPage: function (activeMenuItem, subItemId) {
 			var url, viewType, pageView, page, query = {}, model, index;
 
 			if (typeof activeMenuItem === 'string') {
@@ -63,7 +63,7 @@
 
 			if (this.currentPageView) this.currentPageView.remove();
 			this.currentPageView = pageView;
-			this.pageEl.appendChild(pageView.render().el);
+			this.pageEl.appendChild(pageView.render(subItemId).el);
 		}
 	});
 
