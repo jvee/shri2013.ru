@@ -6,7 +6,11 @@
 
 		model: App.PersonModel,
 
-		comparator: 'name'
+		comparator: 'name',
+
+		initialize: function (data, options) {
+			this.localStorage = options.localStorage;
+		}
 
 	});
 

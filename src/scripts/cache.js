@@ -2,7 +2,8 @@
 
 	var localVersion = localStorage['version'],
 		head = document.getElementsByTagName('head')[0],
-		style = document.createElement('style');
+		style = document.createElement('style'),
+		localData, x;
 
 	if (!localVersion || localVersion !== App.version) {
 		
@@ -15,7 +16,13 @@
 			async: false,
 			complete: function (xhr, status) {
 				App.data = $.parseJSON(xhr.responseText);
-				localStorage['app.data'] = xhr.responseText;
+				localData = $.extend(true, {}, App.data);
+
+				for (x = 0; x < localData.pages.length; x++) {
+					localData.pages[x].data = undefined;
+				}
+
+				localStorage['app.data'] = JSON.stringify(localData);
 			}
 		});
 

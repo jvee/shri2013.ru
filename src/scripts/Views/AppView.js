@@ -33,10 +33,16 @@
 		},
 
 		parsePages: function (pages) {
-			var x;
+			var x, page;
 
 			for (x = 0; x < pages.length; x++) {
-				this.pages[pages[x].url] = new App[pages[x].type](pages[x].data);
+				page = new App[pages[x].type](pages[x].data, {
+					localStorage: new Backbone.LocalStorage(pages[x].url)
+				});
+
+				this.pages[pages[x].url] = page;
+
+				page.fetch();
 			}
 		},
 
