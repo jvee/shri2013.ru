@@ -350,6 +350,18 @@ module.exports = function (grunt) {
 			dep: {
 				files: 'deploy/data.min.json'
 			}
+		},
+
+		preprocess: {
+			manifest: {
+				files: { 'deploy/manifest.appcache': 'src/manifest.appcache'},
+				options: {
+					context: {
+						version: '<%= pkg.version %>',
+						rootDir: '/<%= pkg.name %>'
+					}
+				}
+			}
 		}
 
 	});
@@ -390,6 +402,8 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-gh-pages');
 	// https://github.com/werk85/grunt-json-minify
 	grunt.loadNpmTasks('grunt-json-minify');
+	// https://github.com/jsoverson/grunt-preprocess
+	grunt.loadNpmTasks('grunt-preprocess');
 
 
 	grunt.registerTask('default', ['copy:bower', 'concurrent:dev']);
@@ -409,7 +423,8 @@ module.exports = function (grunt) {
 		'json-minify',
 		'concat',
 		'uglify',
-		'clean'
+		'clean',
+		'preprocess:manifest'
 	]);
 	grunt.registerTask('testserver', ['jade:test', 'connect:testServer']);
 	grunt.registerTask('deploy', ['jade:dep', 'gh-pages']);
