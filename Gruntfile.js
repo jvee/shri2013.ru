@@ -60,6 +60,11 @@ module.exports = function (grunt) {
 				tasks: ['copy:scripts']
 			},
 
+			json: {
+				files: ['src/data/data.json'],
+				tasks: ['copy:json']
+			},
+
 			// tests: {
 			// 	files: ['src/scripts/**/*.js', 'test/**/spec.js'],
 			// 	tasks: ['mocha'],
@@ -225,6 +230,10 @@ module.exports = function (grunt) {
 				filter: 'isFile'
 			},
 
+			json: {
+				files: {'site/data.json': ['src/data/data.json']}
+			},
+
 			imagesDep: {
 				expand: true,
 				cwd: 'src/images/',
@@ -236,7 +245,7 @@ module.exports = function (grunt) {
 			scriptsDep: {
 				expand: true,
 				cwd: 'src/scripts',
-				src: ['**/*.js', '!data.js'],
+				src: '**/*.js',
 				dest: 'deploy/js/tmp',
 				filter: 'isFile'
 			},
@@ -259,7 +268,11 @@ module.exports = function (grunt) {
 				files: {
 					'deploy/404.html': ['deploy/index.html']
 				}
-			}
+			},
+
+			jsonDep: {
+				files: {'deploy/data.min.json': ['src/data/data.json']}
+			},
 
 		},
 
@@ -316,8 +329,7 @@ module.exports = function (grunt) {
 					report: 'min'
 				},
 				files: {
-					'deploy/js/app.min.js': ['deploy/js/tmp/built.js'],
-					'deploy/js/data.min.js': ['src/scripts/data.js']
+					'deploy/js/app.min.js': ['deploy/js/tmp/built.js']
 				}
 			}
 		},
@@ -331,6 +343,12 @@ module.exports = function (grunt) {
 				base: 'deploy/'
 			},
 			src: ['**']
+		},
+
+		'json-minify': {
+			dep: {
+				files: 'deploy/data.min.json'
+			}
 		}
 
 	});
@@ -369,7 +387,8 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	// https://github.com/tschaub/grunt-gh-pages
 	grunt.loadNpmTasks('grunt-gh-pages');
-
+	// https://github.com/werk85/grunt-json-minify
+	grunt.loadNpmTasks('grunt-json-minify');
 
 
 	grunt.registerTask('default', ['copy:bower', 'concurrent:dev']);
@@ -385,6 +404,8 @@ module.exports = function (grunt) {
 		'copy:bowerDep',
 		'copy:jqueryDep',
 		'copy:index404',
+		'copy:jsonDep',
+		'json-minify',
 		'concat',
 		'uglify',
 		'clean'
