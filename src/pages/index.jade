@@ -6,9 +6,12 @@ html(lang="en")
 
 
 		if deploy == true
-			script!= 'window.App = {version:\'' + version + '\'}'
+			script 
+				window.App = {
+					version: '#{version}',
+					stylesLink: '#{rootDir}/css/style.css',
+				}
 			script(src="#{rootDir}/js/data.min.js")
-			link(href="#{rootDir}/css/style.css", rel="stylesheet", type="text/css", charset="utf-8")
 		else
 			script(src="/js/data.js")
 			link(href="/css/style.css", rel="stylesheet", type="text/css", charset="utf-8")
@@ -46,5 +49,6 @@ html(lang="en")
 			script(src="/js/Views/StaticView.js")
 			script(src="/js/Views/AppView.js")
 
+			script(src="/js/cache.js")
 			script(src="/js/router.js")
 			script(src="/js/app.js")

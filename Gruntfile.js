@@ -302,6 +302,7 @@ module.exports = function (grunt) {
 					'deploy/js/tmp/Collections/*.js',
 					'deploy/js/tmp/templates.js',
 					'deploy/js/tmp/Views/*.js',
+					'deploy/js/tmp/cache.js',
 					'deploy/js/tmp/router.js',
 					'deploy/js/tmp/app.js'
 				],
