@@ -1,17 +1,19 @@
 doctype 5
-html(lang="en")
+html(lang="en", manifest= deploy ? "manifest.appcache" : undefined)
 	head
 		meta(charset="utf-8")
 		title ШРИ в Москве 2013
 
 
 		if deploy == true
-			script!= 'window.App = {version:\'' + version + '\'}'
-			script(src="#{rootDir}/js/data.min.js")
-			link(href="#{rootDir}/css/style.css", rel="stylesheet", type="text/css", charset="utf-8")
+			script window.App={version:'#{version}',stylesLink:'#{rootDir}/css/style.css',dataLink:'#{rootDir}/data.min.json'};
 		else
-			script(src="/js/data.js")
-			link(href="/css/style.css", rel="stylesheet", type="text/css", charset="utf-8")
+			script 
+				window.App = {
+					version: undefined,
+					stylesLink: '/css/style.css',
+					dataLink: '/data.json'
+				};
 
 	body
 
@@ -25,6 +27,7 @@ html(lang="en")
 			script(src="/js/lib/jquery.js")
 			script(src="/js/lib/underscore.js")
 			script(src="/js/lib/backbone.js")
+			script(src="/js/lib/backbone.localStorage.js")
 
 			script(src="/js/Models/PersonModel.js")
 			script(src="/js/Models/LectureModel.js")
@@ -46,5 +49,6 @@ html(lang="en")
 			script(src="/js/Views/StaticView.js")
 			script(src="/js/Views/AppView.js")
 
+			script(src="/js/cache.js")
 			script(src="/js/router.js")
 			script(src="/js/app.js")

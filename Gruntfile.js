@@ -66,6 +66,11 @@ module.exports = function (grunt) {
 				tasks: ['copy:scripts']
 			},
 
+			json: {
+				files: ['src/data/data.json'],
+				tasks: ['copy:json']
+			},
+
 			// tests: {
 			// 	files: ['src/scripts/**/*.js', 'test/**/spec.js'],
 			// 	tasks: ['mocha'],
@@ -231,6 +236,10 @@ module.exports = function (grunt) {
 				filter: 'isFile'
 			},
 
+			json: {
+				files: {'site/data.json': ['src/data/data.json']}
+			},
+
 			imagesDep: {
 				expand: true,
 				cwd: 'src/images/',
@@ -242,7 +251,7 @@ module.exports = function (grunt) {
 			scriptsDep: {
 				expand: true,
 				cwd: 'src/scripts',
-				src: ['**/*.js', '!data.js'],
+				src: '**/*.js',
 				dest: 'deploy/js/tmp',
 				filter: 'isFile'
 			},
@@ -265,7 +274,11 @@ module.exports = function (grunt) {
 				files: {
 					'deploy/404.html': ['deploy/index.html']
 				}
-			}
+			},
+
+			jsonDep: {
+				files: {'deploy/data.min.json': ['src/data/data.json']}
+			},
 
 		},
 
@@ -304,10 +317,12 @@ module.exports = function (grunt) {
 				src: [
 					'deploy/js/tmp/lib/underscore.js',
 					'deploy/js/tmp/lib/backbone.js',
+					'deploy/js/tmp/lib/backbone.localStorage.js',
 					'deploy/js/tmp/Models/*.js',
 					'deploy/js/tmp/Collections/*.js',
 					'deploy/js/tmp/templates.js',
 					'deploy/js/tmp/Views/*.js',
+					'deploy/js/tmp/cache.js',
 					'deploy/js/tmp/router.js',
 					'deploy/js/tmp/app.js'
 				],
@@ -321,8 +336,7 @@ module.exports = function (grunt) {
 					report: 'min'
 				},
 				files: {
-					'deploy/js/app.min.js': ['deploy/js/tmp/built.js'],
-					'deploy/js/data.min.js': ['src/scripts/data.js']
+					'deploy/js/app.min.js': ['deploy/js/tmp/built.js']
 				}
 			}
 		},
@@ -336,6 +350,24 @@ module.exports = function (grunt) {
 				base: 'deploy/'
 			},
 			src: ['**']
+		},
+
+		'json-minify': {
+			dep: {
+				files: 'deploy/data.min.json'
+			}
+		},
+
+		preprocess: {
+			manifest: {
+				files: { 'deploy/manifest.appcache': 'src/manifest.appcache'},
+				options: {
+					context: {
+						version: '<%= pkg.version %>',
+						rootDir: '/<%= pkg.name %>'
+					}
+				}
+			}
 		}
 
 	});
@@ -374,7 +406,10 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	// https://github.com/tschaub/grunt-gh-pages
 	grunt.loadNpmTasks('grunt-gh-pages');
-
+	// https://github.com/werk85/grunt-json-minify
+	grunt.loadNpmTasks('grunt-json-minify');
+	// https://github.com/jsoverson/grunt-preprocess
+	grunt.loadNpmTasks('grunt-preprocess');
 
 
 	grunt.registerTask('default', ['copy:bower', 'concurrent:dev']);
@@ -390,9 +425,12 @@ module.exports = function (grunt) {
 		'copy:bowerDep',
 		'copy:jqueryDep',
 		'copy:index404',
+		'copy:jsonDep',
+		'json-minify',
 		'concat',
 		'uglify',
-		'clean'
+		'clean',
+		'preprocess:manifest'
 	]);
 	grunt.registerTask('testserver', ['jade:test', 'connect:testServer']);
 	grunt.registerTask('deploy', ['jade:dep', 'gh-pages']);

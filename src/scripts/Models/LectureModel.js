@@ -10,6 +10,12 @@
 			description: '',
 			presentationUrl: '',
 			videoUrl: ''
+		},
+
+		idAttribute: 'title',
+
+		initialize: function (data, options) {
+			if (!options.merge) this.save();
 		}
 
 	});
