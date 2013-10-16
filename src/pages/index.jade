@@ -6,15 +6,14 @@ html(lang="en")
 
 
 		if deploy == true
+			script window.App={version:'#{version}',stylesLink:'#{rootDir}/css/style.css',dataLink:'#{rootDir}/data.min.json'};
+		else
 			script 
 				window.App = {
-					version: '#{version}',
-					stylesLink: '#{rootDir}/css/style.css',
-				}
-			script(src="#{rootDir}/js/data.min.js")
-		else
-			script(src="/js/data.js")
-			link(href="/css/style.css", rel="stylesheet", type="text/css", charset="utf-8")
+					version: undefined,
+					stylesLink: '/css/style.css',
+					dataLink: '/data.json'
+				};
 
 	body
 
