@@ -311,6 +311,7 @@ module.exports = function (grunt) {
 				src: [
 					'deploy/js/tmp/lib/underscore.js',
 					'deploy/js/tmp/lib/backbone.js',
+					'deploy/js/tmp/lib/backbone.localStorage.js',
 					'deploy/js/tmp/Models/*.js',
 					'deploy/js/tmp/Collections/*.js',
 					'deploy/js/tmp/templates.js',
