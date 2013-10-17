@@ -11,6 +11,7 @@
 		initialize: function (options) {
 			this.menu = new App.MenuCollection(options.data.menu || []);
 			this.menuView = new App.MenuView({ collection: this.menu });
+			this.popup = new App.PopupView();
 
 			this.pages = {};
 
@@ -29,6 +30,12 @@
 		bindEvents: function () {
 			if (App.vents) {
 				App.vents.on('app.route', this.renderPage, this);
+				App.vents.on('app.popup:show', function () {
+					this.$el.addClass('is-popupped');
+				}, this);
+				App.vents.on('app.popup:close', function () {
+					this.$el.removeClass('is-popupped');
+				}, this);
 			}
 		},
 
@@ -69,7 +76,7 @@
 
 			if (this.currentPageView) this.currentPageView.remove();
 			this.currentPageView = pageView;
-			this.pageEl.appendChild(pageView.render(subItemId).el);
+			this.pageEl.appendChild(pageView.render(subItemId, url).el);
 		}
 	});
 
