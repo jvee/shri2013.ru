@@ -15,7 +15,7 @@
 		idAttribute: 'title',
 
 		initialize: function (data, options) {
-			if (!options.merge) this.save();
+			if (options && !options.merge && options.collection.localStorage) this.save();
 		}
 
 	});

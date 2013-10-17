@@ -7,6 +7,7 @@
 	margin-left (3000%/990)
 	box-shadow: 0 0 5px rgba(0,0,0,0.1);
 	overflow hidden
+	transition box-shadow .3s linear
 
 	&__wrap
 		display block
@@ -18,11 +19,15 @@
 		background-position center center
 		background-repeat no-repeat
 		background-size cover
+
 		-webkit-transition -webkit-transform 1s ease
 		-webkit-backface-visibility hidden
+		transition transform 1s ease
+		backface-visibility hidden
 
 	&__wrap:hover
 		-webkit-transform scale(1.05, 1.05)
+		transform scale(1.05, 1.05)
 
 	&__name
 		position absolute
@@ -36,3 +41,6 @@
 
 	&__name:first-letter
 		color #F00
+
+	&:hover
+		box-shadow 0 0 15px rgba(0,0,0,0.6)
