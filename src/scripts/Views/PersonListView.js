@@ -8,10 +8,11 @@
 
 		className: 'b-person-list',
 
-		render: function (id) {
-			if (id) return this.addOne(this.collection.get(id));
+		render: function (id, url) {
 
 			this.collection.each(this.addOne, this);
+
+			if (id) this.showOne(id, url);
 
 			return this;
 		},
@@ -22,6 +23,15 @@
 			this.el.appendChild(personView.render().el);
 
 			return this;
+		},
+
+		showOne: function (id, url) {
+			var view = new App.PersonView({model: this.collection.get(id)});
+
+			if (App.vents) {
+				App.vents.trigger('app.popup', view, url);
+			}
+
 		}
 
 	});
