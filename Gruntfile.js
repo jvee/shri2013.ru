@@ -421,7 +421,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-autoprefixer');
 
 
-	grunt.registerTask('default', ['copy:bower', 'concurrent:dev']);
+	grunt.registerTask('default', ['copy:bower', 'copy:images', 'concurrent:dev']);
 	grunt.registerTask('devserver', ['connect:server']);
 	grunt.registerTask('test', ['mocha']);
 	grunt.registerTask('build', [
