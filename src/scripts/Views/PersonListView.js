@@ -18,7 +18,7 @@
 		},
 
 		addOne: function (model) {
-			var personView = new App.PersonView({ model: model });
+			var personView = new App.PersonListItemView({ model: model });
 
 			this.el.appendChild(personView.render().el);
 
