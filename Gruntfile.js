@@ -307,7 +307,7 @@ module.exports = function (grunt) {
 					report: 'gzip'
 				},
 				files: {
-					'deploy/css/style.css': ['deploy/css/tmp/style.css']
+					'deploy/css/style.css': ['deploy/css/tmp/style.prefixed.css']
 				}
 			}
 		},
@@ -368,6 +368,13 @@ module.exports = function (grunt) {
 					}
 				}
 			}
+		},
+
+		autoprefixer: {
+			dep: {
+				src: 'deploy/css/tmp/style.css',
+				dest: 'deploy/css/tmp/style.prefixed.css'
+			}
 		}
 
 	});
@@ -410,6 +417,8 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-json-minify');
 	// https://github.com/jsoverson/grunt-preprocess
 	grunt.loadNpmTasks('grunt-preprocess');
+	// https://github.com/nDmitry/grunt-autoprefixer
+	grunt.loadNpmTasks('grunt-autoprefixer');
 
 
 	grunt.registerTask('default', ['copy:bower', 'concurrent:dev']);
@@ -419,6 +428,7 @@ module.exports = function (grunt) {
 		'jade:dep',
 		'dot:dep',
 		'stylus:dep',
+		'autoprefixer',
 		'csso',
 		'copy:scriptsDep',
 		'copy:imagesDep',
@@ -429,8 +439,8 @@ module.exports = function (grunt) {
 		'json-minify',
 		'concat',
 		'uglify',
-		'clean',
-		'preprocess:manifest'
+		'preprocess:manifest',
+		'clean'
 	]);
 	grunt.registerTask('testserver', ['jade:test', 'connect:testServer']);
 	grunt.registerTask('deploy', ['jade:dep', 'gh-pages']);

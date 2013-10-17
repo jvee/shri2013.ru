@@ -24,7 +24,10 @@
 		height 90%
 		position relative
 		transition .3s linear
+
 		-webkit-transform translateY(-1000px)
+		transform translateY(-1000px)
+		
 		z-index 1001
 
 		&:before
@@ -60,3 +63,4 @@
 
 	&.is-visible &__block
 		-webkit-transform translateY(0)
+		transform translateY(0)
