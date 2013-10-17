@@ -9,7 +9,7 @@
 		comparator: 'title',
 
 		initialize: function (data, options) {
-			this.localStorage = options.localStorage;
+			this.localStorage = options && options.localStorage;
 		}
 
 	});

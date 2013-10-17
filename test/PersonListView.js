@@ -30,9 +30,9 @@ suite('PersonListView', function () {
 				this.testTemplate = '';
 
 				for (var x = 0; x < fixtures.persons.length; x++) {
-					this.testTemplate += '<article class="b-person b-block">';
-					this.testTemplate += App.templates.PersonTemplate(fixtures.persons[x]);
-					this.testTemplate += '</article>';
+					this.testTemplate += '<div class="b-person-li b-block">';
+					this.testTemplate += App.templates.PersonListItemTemplate(fixtures.persons[x]);
+					this.testTemplate += '</div>';
 				}
 
 				persons.render();

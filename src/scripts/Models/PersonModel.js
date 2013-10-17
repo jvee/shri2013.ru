@@ -13,7 +13,7 @@
 
 		initialize: function (attrs, options) {
 			if (attrs && attrs.name) this.id = this.get('name').replace(/\s/g, '_');
-			if (!options.merge) this.save();
+			if (options && !options.merge && options.collection.localStorage) this.save();
 		}
 
 	});
