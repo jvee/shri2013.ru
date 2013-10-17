@@ -37,13 +37,9 @@
 
 		setActive: function (event) {
 			if (event) event.preventDefault();
-
-			var isActive = this.model.get('active');
-
-			if (isActive) return;
 		
 			if (App.vents) {
-				App.vents.trigger('app.navigate', this.model.get('url'),  {trigger: true});
+				App.vents.trigger('app.navigate', '!' + this.model.get('url'),  {trigger: true});
 			}
 
 			this.model.set('active', true);

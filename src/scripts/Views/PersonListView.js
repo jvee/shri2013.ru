@@ -8,37 +8,30 @@
 
 		className: 'b-person-list',
 
-		initialize: function () {
-			if (App.vents) {
-				App.vents.on('app.student', this.showOne, this);
-			}
-		},
+		render: function (id, url) {
 
-		render: function () {
-			this.collection.each(this.addPerson, this);
+			this.collection.each(this.addOne, this);
+
+			if (id) this.showOne(id, url);
 
 			return this;
 		},
 
-		addPerson: function (model) {
-			var personView = new App.PersonView({ model: model });
+		addOne: function (model) {
+			var personView = new App.PersonListItemView({ model: model });
 
 			this.el.appendChild(personView.render().el);
 
 			return this;
 		},
 
-		showOne: function (name) {
-			var model = this.collection.findWhere({name: name});
+		showOne: function (id, url) {
+			var view = new App.PersonView({model: this.collection.get(id)});
 
-			console.log(name, model);
-			this.el.innerHTML = '';
+			if (App.vents) {
+				App.vents.trigger('app.popup', view, url);
+			}
 
-			if (!model) return this;
-
-			this.addPerson(model);
-
-			return this;
 		}
 
 	});

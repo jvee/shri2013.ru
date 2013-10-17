@@ -1,0 +1,2 @@
+<a href="#!/students/{{=it.id}}" class="b-person-li__wrap" style="background-image:url({{=it.photo}})"></a>
+<a href="#!/students/{{=it.id}}" class="b-person-li__name">{{=it.name}}</a>

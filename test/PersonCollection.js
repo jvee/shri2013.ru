@@ -1,5 +1,9 @@
 suite('PersonCollection', function () {
 
+	setup(function (){
+		localStorage.clear();
+	});
+
 	suite('Common', function () {
 
 		test('should exist', function () {

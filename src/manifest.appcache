@@ -1,0 +1,10 @@
+CACHE MANIFEST
+# release <!-- @echo version -->
+
+CACHE:
+<!-- @echo rootDir -->/index.html
+<!-- @echo rootDir -->/js/app.min.js
+<!-- @echo rootDir -->/js/jquery.min.js
+
+NETWORK:
+*

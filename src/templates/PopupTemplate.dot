@@ -1,0 +1,6 @@
+<div class="b-popup__block">
+	<div class="b-popup__close">&times;</div>
+	<div class="b-popup__wrap">
+		<div class="b-popup__content"></div>
+	</div>
+</div>

@@ -30,9 +30,9 @@ suite('PersonListView', function () {
 				this.testTemplate = '';
 
 				for (var x = 0; x < fixtures.persons.length; x++) {
-					this.testTemplate += '<article class="b-person b-block">';
-					this.testTemplate += App.templates.PersonTemplate(fixtures.persons[x]);
-					this.testTemplate += '</article>';
+					this.testTemplate += '<div class="b-person-li b-block">';
+					this.testTemplate += App.templates.PersonListItemTemplate(fixtures.persons[x]);
+					this.testTemplate += '</div>';
 				}
 
 				persons.render();
@@ -47,21 +47,21 @@ suite('PersonListView', function () {
 				assert.equal(persons.render(), persons, 'PersonListView object');
 			});
 
-			test('should call method #addPerson()', function () {
+			test('should call method #addOne()', function () {
 
-				persons.addPerson = sinon.stub();
+				persons.addOne = sinon.stub();
 				persons.render();
 
-				assert.ok(persons.addPerson.calledThrice);
+				assert.ok(persons.addOne.calledThrice);
 
 			});
 
 		});
 
-		suite('#addPerson', function () {
+		suite('#addOne', function () {
 
 			test('should return this', function () {
-				assert.equal(persons.addPerson(models.first()), persons, 'PersonListView object');
+				assert.equal(persons.addOne(models.first()), persons, 'PersonListView object');
 			});
 
 		});

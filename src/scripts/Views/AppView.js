@@ -11,6 +11,7 @@
 		initialize: function (options) {
 			this.menu = new App.MenuCollection(options.data.menu || []);
 			this.menuView = new App.MenuView({ collection: this.menu });
+			this.popup = new App.PopupView();
 
 			this.pages = {};
 
@@ -29,14 +30,26 @@
 		bindEvents: function () {
 			if (App.vents) {
 				App.vents.on('app.route', this.renderPage, this);
+				App.vents.on('app.popup:show', function () {
+					this.$el.addClass('is-popupped');
+				}, this);
+				App.vents.on('app.popup:close', function () {
+					this.$el.removeClass('is-popupped');
+				}, this);
 			}
 		},
 
 		parsePages: function (pages) {
-			var x;
+			var x, page;
 
 			for (x = 0; x < pages.length; x++) {
-				this.pages[pages[x].url] = new App[pages[x].type](pages[x].data);
+				page = new App[pages[x].type](pages[x].data, {
+					localStorage: new Backbone.LocalStorage(pages[x].url)
+				});
+
+				this.pages[pages[x].url] = page;
+
+				page.fetch();
 			}
 		},
 
@@ -46,7 +59,7 @@
 			return this;
 		},
 
-		renderPage: function (activeMenuItem, subItem, subParamName) {
+		renderPage: function (activeMenuItem, subItemId) {
 			var url, viewType, pageView, page, query = {}, model, index;
 
 			if (typeof activeMenuItem === 'string') {
@@ -63,7 +76,7 @@
 
 			if (this.currentPageView) this.currentPageView.remove();
 			this.currentPageView = pageView;
-			this.pageEl.appendChild(pageView.render().el);
+			this.pageEl.appendChild(pageView.render(subItemId, url).el);
 		}
 	});
 

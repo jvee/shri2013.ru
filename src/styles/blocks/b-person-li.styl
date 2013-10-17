@@ -1,0 +1,46 @@
+.b-person-li
+	padding 0
+	width (21750%/990)
+	padding-top (21750%/990)
+	position relative
+	float left
+	margin-left (3000%/990)
+	box-shadow: 0 0 5px rgba(0,0,0,0.1);
+	overflow hidden
+	transition box-shadow .3s linear
+
+	&__wrap
+		display block
+		position absolute
+		top 0
+		left 0
+		width 100%
+		height 100%
+		background-position center center
+		background-repeat no-repeat
+		background-size cover
+
+		-webkit-transition -webkit-transform 1s ease
+		-webkit-backface-visibility hidden
+		transition transform 1s ease
+		backface-visibility hidden
+
+	&__wrap:hover
+		-webkit-transform scale(1.05, 1.05)
+		transform scale(1.05, 1.05)
+
+	&__name
+		position absolute
+		bottom 5%
+		left 0
+		background #fff
+		color #333
+		padding .3em .8em
+		font-weight bold
+		text-decoration none
+
+	&__name:first-letter
+		color #F00
+
+	&:hover
+		box-shadow 0 0 15px rgba(0,0,0,0.6)

@@ -66,7 +66,7 @@ suite('MenuItemView', function () {
 				this.notActiveMenuItem.setActive();
 
 				assert.ok(ventsSpy.calledOnce);
-				assert.deepEqual(ventsSpy.args[0], ['app.navigate', '/students', {trigger: true}], 'with right arguments');
+				assert.deepEqual(ventsSpy.args[0], ['app.navigate', '!/students', {trigger: true}], 'with right arguments');
 
 				ventsSpy.restore();
 			});

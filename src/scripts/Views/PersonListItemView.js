@@ -2,13 +2,13 @@
 
 	'use strict';
 
-	App.PersonView = Backbone.View.extend({
+	App.PersonListItemView = Backbone.View.extend({
 
-		tagName: 'article',
+		tagName: 'div',
 
-		className: 'b-person b-block',
+		className: 'b-person-li b-block',
 
-		template: App.templates['PersonTemplate'],
+		template: App.templates['PersonListItemTemplate'],
 
 		render: function () {
 			var data = $.extend({id: this.model.id}, this.model.toJSON());

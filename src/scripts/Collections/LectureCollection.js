@@ -6,7 +6,11 @@
 
 		model: App.LectureModel,
 
-		comparator: 'title'
+		comparator: 'title',
+
+		initialize: function (data, options) {
+			this.localStorage = options && options.localStorage;
+		}
 
 	});
 
